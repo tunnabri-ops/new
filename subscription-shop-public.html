@@ -255,24 +255,70 @@ body.light .order-done pre{background:#fff;color:#22334f}
 body.light .recent{background:#fff}
 body.light .recent p{color:#22334f}
 body.light .foot a{color:#2c4160}
+/* light theme completion + color-scheme follows the active theme */
+:root{color-scheme:dark}
+body.light{color-scheme:light}
+body.light .featured{background:radial-gradient(600px 300px at 8% 50%,rgba(31,123,255,.1),transparent 60%)}
+body.light .hero h1{text-shadow:none}
+body.light header .nav{box-shadow:0 14px 34px rgba(23,52,105,.16)}
+body.light .card:hover{box-shadow:0 18px 36px rgba(23,52,105,.18),0 0 0 1px rgba(59,157,255,.3)}
+body.light .logochip:hover,body.light .review:hover{box-shadow:0 14px 30px rgba(23,52,105,.15)}
+body.light .featured,body.light .help,body.light .rating-box{box-shadow:0 14px 30px rgba(23,52,105,.12)}
+body.light .drawer{box-shadow:-24px 0 60px rgba(23,52,105,.25)}
+body.light .modal-card{box-shadow:0 -18px 60px rgba(23,52,105,.3)}
+body.light .pay-note{color:#7a5a12}
+body.light .verified{color:#1f6dff}
 /* responsive */
 @media(max-width:1020px){.grid{grid-template-columns:repeat(3,1fr)}.reviews{grid-template-columns:1fr 1fr}.foot{grid-template-columns:1fr 1fr}}
 @media(max-width:760px){
-  .nav-links{display:none}.searchbox input{width:52px}
+  .nav-links{display:none}
   .nav{gap:6px;padding:6px 8px}
   .logo{padding:4px 2px}.logo-txt{display:none}
+  .nav-right{flex:1;min-width:0;gap:6px}
+  .searchbox{flex:1;min-width:0;padding:0 10px}
+  .searchbox input{width:100%;min-width:0}
   .iconbtn{width:38px;height:38px;font-size:15px}
   .iconbtn.hide-sm{display:none}
+  .searchbox input,.field input,.field select{font-size:16px}
+  .wrap{padding:0 14px}
+  .hero-in{padding:30px 14px 20px}
   .hero-grid{grid-template-columns:1fr}.phone-stage{display:none}
-  .hero .tagline{letter-spacing:.3em}
-  .grid{grid-template-columns:repeat(2,1fr);gap:11px}.tile{height:196px}.tile .brand{font-size:20px}.tile .cube{width:52px;height:52px;font-size:22px}.ped{width:92px}.picframe{width:min(196px,94%)}
-  .featured{grid-template-columns:1fr;padding:16px}.featured .tile{height:230px}
-  .reviews{grid-template-columns:1fr}
-  .set-grid{grid-template-columns:1fr}
-  .foot{grid-template-columns:1fr 1fr}.recent{display:none!important}
+  .hero-brand{gap:11px;margin-bottom:18px}
+  .hero-brand .logo-mark{width:46px;height:46px;border-radius:13px;font-size:19px}
+  .hero-brand .bn{font-size:19px}
+  .hero h1{font-size:clamp(34px,11vw,46px)}
+  .hero .tagline{letter-spacing:.22em;font-size:12.5px;margin-bottom:22px}
+  .hero-badges{gap:10px}
+  .hbadge{flex:1 1 100%;padding:12px 15px;border-radius:14px}
+  .hbadge .ic{font-size:24px}
+  .hbadge b{font-size:16.5px}
+  .hero-cta{gap:10px;margin-top:22px}
+  .hero-cta .btn{flex:1 1 100%;justify-content:center}
+  .hero-stats{gap:8px;margin-top:22px}
+  .paybar{margin-top:24px;padding:12px 14px;gap:9px;border-radius:14px}
   .paybar .lbl{border-right:0;padding-right:0}
+  section{padding:34px 0 4px}
+  .sec-head{flex-wrap:wrap}
+  .rating-box{width:100%}
+  .grid{grid-template-columns:repeat(2,1fr);gap:11px}.tile{height:200px}.tile .brand{font-size:19px;padding:0 6px}.tile .cube{width:52px;height:52px;font-size:22px}.ped{width:92px}.picframe{width:min(196px,94%)}
+  .card-body{padding:11px 12px 13px}.card-body h3{font-size:15px}
+  .featured{grid-template-columns:1fr;padding:16px;gap:18px}.featured .tile{height:230px}
+  .bigprice{font-size:33px}
+  .reviews{grid-template-columns:1fr}
+  .review p{min-height:0}
+  .set-grid{grid-template-columns:1fr}
+  .help{padding:20px}
+  .foot{grid-template-columns:1fr 1fr}.recent{display:none!important}
+  .modal-card{padding:18px 16px calc(18px + env(safe-area-inset-bottom))}
+  .wa-float{right:14px;bottom:calc(14px + env(safe-area-inset-bottom))}
+  .toast{bottom:calc(20px + env(safe-area-inset-bottom))}
 }
-@media(max-width:420px){.grid{grid-template-columns:1fr 1fr}.card-body h3{font-size:14.5px}.price b{font-size:17px}}
+@media(max-width:560px){
+  .foot{grid-template-columns:1fr;gap:20px}
+  .help .btn{width:100%;justify-content:center}
+  .feat-list{grid-template-columns:1fr}
+}
+@media(max-width:420px){.grid{grid-template-columns:1fr 1fr}.card-body h3{font-size:14.5px}.price b{font-size:17px}.tile{height:184px}.tile .brand{font-size:16.5px}.hero-brand .bn small{letter-spacing:.3em}}
 /* ===== beauty polish pass ===== */
 ::selection{background:var(--blue);color:#fff}
 :focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
@@ -350,6 +396,8 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;b
 </style>
 </head>
 <body>
+<script>/* theme: dark by default; light only when the visitor's system prefers light (toggle in the header switches anytime) */
+try{ if(window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches){ document.body.classList.add("light"); } }catch(e){}</script>
 
 <header><div class="wrap" style="padding:0 8px">
   <nav class="nav">
@@ -360,7 +408,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;b
     </div>
     <div class="nav-right">
       <label class="searchbox">🔍<input id="searchInput" type="search" placeholder="Search products" aria-label="Search products"></label>
-      <button class="iconbtn hide-sm" id="themeBtn" title="Light / dark theme" aria-label="Toggle theme">☀️</button>
+      <button class="iconbtn" id="themeBtn" title="Dark / light mode" aria-label="Toggle dark or light mode">☀️</button>
       <button class="iconbtn" id="trackBtn" title="Track order" aria-label="Track order">🚚</button>
       <button class="iconbtn hide-sm" id="accountBtn" title="Shop owner settings" aria-label="Shop owner settings">👤</button>
       <button class="iconbtn" id="cartBtn" aria-label="Open cart">🛒<span class="cart-count hidden" id="cartCount">0</span></button>
@@ -833,9 +881,12 @@ $("helpWa").addEventListener("click", genericWa);
 $("waFloat").addEventListener("click", genericWa);
 $("footWa").addEventListener("click", function(e){ e.preventDefault(); genericWa(); });
 /* header utility buttons */
+function syncThemeIcon(){ $("themeBtn").textContent = document.body.classList.contains("light") ? "🌙" : "☀️"; }
+syncThemeIcon();
 $("themeBtn").addEventListener("click", function(){
   var light = document.body.classList.toggle("light");
-  $("themeBtn").textContent = light ? "🌙" : "☀️";
+  syncThemeIcon();
+  toast(light ? "Light mode" : "Dark mode");
 });
 $("accountBtn").addEventListener("click", function(){
   document.getElementById("settings").scrollIntoView({behavior:"smooth"});
