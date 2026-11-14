@@ -294,8 +294,10 @@ body.light .verified{color:#1f6dff}
   .nav-links{display:none}
   .nav{gap:6px;padding:8px;border-radius:24px;flex-wrap:wrap}
   .logo{padding:4px 2px}.logo-txt{display:none}
-  .nav-right{flex:1 1 100%;order:3;min-width:0;gap:6px;margin-left:0}
-  .searchbox{flex:1;min-width:0;padding:0 10px}
+  .nav-right{flex:1 1 100%;order:3;min-width:0;gap:6px;margin-left:0;flex-wrap:wrap}
+  .searchbox{flex:1 1 100%;order:-1;min-width:0;padding:0 12px}
+  .iconbtn.admin-entry{padding:0 11px}
+  .iconbtn.admin-entry .admin-entry-txt{display:none}
   .searchbox input{width:100%;min-width:0}
   .iconbtn{width:38px;height:38px;font-size:15px}
   .iconbtn.hide-sm{display:none}
@@ -526,6 +528,17 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;b
 /* --- লগইন ভুল পাসওয়ার্ডের বার্তা --- */
 .login-error{ color:var(--red); font-size:13.5px; font-weight:700; margin:10px 0 0; min-height:18px; }
 
+/* --- কাস্টমার অ্যাকাউন্ট (সাইন-আপ / লগইন / আমার অর্ডার) --- */
+.acct-tabs{ display:flex; gap:8px; margin-bottom:16px; }
+.acct-tabs button{ flex:1; padding:11px 8px; border-radius:10px; border:1px solid var(--line); background:#0a1428; color:var(--muted); font-weight:800; font-size:14.5px; cursor:pointer; }
+.acct-tabs button.on{ background:var(--blue); border-color:var(--blue); color:#fff; }
+body.light .acct-tabs button{ background:#fff; }
+body.light .acct-tabs button.on{ background:var(--blue); border-color:var(--blue); color:#fff; }
+.acct-order{ border:1px solid var(--line); border-radius:14px; padding:14px; margin-bottom:12px; background:var(--card2); }
+.acct-order-head{ display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px; }
+.acct-order-items{ white-space:pre-line; font-size:13.5px; color:var(--muted); line-height:1.65; }
+.acct-order-meta{ margin-top:8px; font-size:13px; color:var(--muted); }
+
 /* --- মোবাইল: স্ট্যাট ২ কলাম, টেবিল কার্ড আকারে --- */
 @media(max-width:760px){
   .admin-stats{ grid-template-columns:1fr 1fr; }
@@ -554,6 +567,7 @@ try{ if(window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").
       <label class="searchbox">🔍<input id="searchInput" type="search" placeholder="Search products" aria-label="Search products"></label>
       <button class="iconbtn" id="themeBtn" title="Dark / light mode" aria-label="Toggle dark or light mode">☀️</button>
       <button class="iconbtn" id="trackBtn" title="Track order" aria-label="Track order">🚚</button>
+      <button class="iconbtn" id="accountBtn" title="My account — লগইন / সাইন-আপ" aria-label="Open my account">👤</button>
       <button class="iconbtn admin-entry" id="adminBtn" title="Admin panel — অথবা ঠিকানার শেষে #admin লিখুন" aria-label="Open admin panel">⚙️<span class="admin-entry-txt">Admin</span></button>
       <button class="iconbtn" id="cartBtn" aria-label="Open cart">🛒<span class="cart-count hidden" id="cartCount">0</span></button>
     </div>
@@ -746,6 +760,7 @@ try{ if(window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").
 <div class="modal" id="checkoutModal"><div class="modal-card">
   <div id="coForm">
     <div style="display:flex;justify-content:space-between;align-items:flex-start"><div><h3>Checkout</h3><p class="sub">পেমেন্ট করে ফর্মটা পূরণ করুন — অর্ডার WhatsApp-এ পাঠানো হবে।</p></div><button class="xbtn" data-close>✕</button></div>
+    <p class="sub" id="coAcctLine" style="margin:0 0 10px"></p>
     <div class="pay-note" id="payNote">প্রথমে নিচের নম্বরে Send Money করুন, তারপর TrxID বসান।</div>
     <div class="pay-methods" id="payMethods">
       <button class="paym on" data-pm="bKash"><img data-paylogo="bkash" alt="">bKash</button><button class="paym" data-pm="Nagad"><img data-paylogo="nagad" alt="">Nagad</button><button class="paym" data-pm="Rocket"><img data-paylogo="rocket" alt="">Rocket</button>
@@ -776,6 +791,47 @@ try{ if(window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").
   <div style="display:flex;justify-content:space-between;align-items:flex-start"><div><h3>Track your order</h3><p class="sub">অর্ডারের আপডেট পেতে আপনার TrxID দিয়ে WhatsApp-এ মেসেজ করুন — ডেলিভারি টিম স্ট্যাটাস জানিয়ে দেবে।</p></div><button class="xbtn" data-close>✕</button></div>
   <div class="field" style="margin-bottom:12px"><label>Transaction ID (TrxID)</label><input id="trackTrx" placeholder="আপনার TrxID"></div>
   <button class="btn btn-wa wfull" id="trackGo">💬 Ask status on WhatsApp</button>
+</div></div>
+
+<!-- ============================================================
+     CUSTOMER ACCOUNT — সাইন-আপ / লগইন / আমার অর্ডার
+     ============================================================ -->
+<div class="modal" id="accountModal"><div class="modal-card">
+  <!-- লগইন করা নেই: সাইন-আপ / লগইন -->
+  <div id="acctAnon">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start"><div><h3>👤 My Account</h3><p class="sub">অ্যাকাউন্ট খুললেই আপনার অর্ডারের হিসাব এক জায়গায় থাকবে, আর চেকআউটে নাম-নম্বর নিজে নিজে বসে যাবে।</p></div><button class="xbtn" data-close>✕</button></div>
+    <div class="acct-tabs">
+      <button type="button" id="tabSignup" class="on">Sign Up — অ্যাকাউন্ট খুলুন</button>
+      <button type="button" id="tabLogin">Login</button>
+    </div>
+    <div id="signupPane">
+      <div class="form-grid">
+        <div class="field"><label>Your name *</label><input id="suName" placeholder="আপনার নাম"></div>
+        <div class="field"><label>Phone (WhatsApp) number *</label><input id="suPhone" inputmode="tel" placeholder="01XXXXXXXXX"></div>
+        <div class="field"><label>Email (optional)</label><input id="suEmail" type="email" placeholder="you@email.com"></div>
+        <div class="field"><label>Password (কমপক্ষে 4 অক্ষর) *</label><input id="suPass" type="password" autocomplete="new-password" placeholder="••••••"></div>
+      </div>
+      <p class="login-error" id="suError"></p>
+      <button class="btn btn-blue wfull" id="suGo" style="margin-top:10px">Create account →</button>
+    </div>
+    <div id="loginPane" class="hidden">
+      <div class="form-grid">
+        <div class="field"><label>Phone (WhatsApp) number *</label><input id="liPhone" inputmode="tel" placeholder="01XXXXXXXXX"></div>
+        <div class="field"><label>Password *</label><input id="liPass" type="password" autocomplete="current-password" placeholder="••••••"></div>
+      </div>
+      <p class="login-error" id="liError"></p>
+      <button class="btn btn-blue wfull" id="liGo" style="margin-top:10px">Login →</button>
+    </div>
+    <p class="sub" style="margin:16px 0 0;font-size:12.5px">⚠️ নোট: এই ওয়েবসাইটটা সার্ভার ছাড়া একটাই HTML ফাইল, তাই অ্যাকাউন্ট শুধু এই ব্রাউজারে পেজ খোলা থাকা পর্যন্তই থাকে — পেজ রিলোড করলে বা অন্য ফোন/ব্রাউজারে গেলে এই অ্যাকাউন্ট আর পাওয়া যাবে না। সব ডিভাইসে স্থায়ী অ্যাকাউন্টের জন্য সার্ভারসহ ওয়েবসাইট লাগবে।</p>
+  </div>
+  <!-- লগইন করা আছে: প্রোফাইল + আমার অর্ডার -->
+  <div id="acctUser" class="hidden">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start"><div><h3 id="acctHello">👤 My Account</h3><p class="sub" id="acctMeta"></p></div><button class="xbtn" data-close>✕</button></div>
+    <h4 style="margin:2px 0 10px">📦 আমার অর্ডারসমূহ</h4>
+    <div id="acctOrders"></div>
+    <button class="btn btn-ghost wfull" id="acctContinue">Continue shopping</button>
+    <button class="btn btn-ghost wfull" id="acctLogout" style="margin-top:9px;color:var(--red)">Logout</button>
+  </div>
 </div></div>
 
 <!-- ============================================================
@@ -1110,6 +1166,9 @@ $("goCheckout").addEventListener("click", function(){
   if(!cart.length){ toast("কার্ট খালি — আগে প্রোডাক্ট যোগ করুন"); return; }
   closeAll(); $("coForm").classList.remove("hidden"); $("coDone").classList.add("hidden");
   $("checkoutModal").classList.add("open"); $("overlay").classList.add("open");
+  $("coAcctLine").textContent = (typeof currentCustomer !== "undefined" && currentCustomer)
+    ? "👤 " + currentCustomer.name + " (" + currentCustomer.phone + ") হিসেবে অর্ডার করছেন — অর্ডারটা আপনার অ্যাকাউন্টের হিসাবে জমা থাকবে।"
+    : "👤 অতিথি হিসেবে অর্ডার করছেন — অ্যাকাউন্ট থাকলে অর্ডারের হিসাব এক জায়গায় থাকে। হেডারের 👤 বাটন থেকে অ্যাকাউন্ট খুলতে পারেন।";
   updatePayNote();
 });
 function updatePayNote(){
@@ -1127,6 +1186,9 @@ $("placeOrder").addEventListener("click", function(){
   lastOrderText = "🛒 New Order — " + CONFIG.shopName + "\n\n" + lines.join("\n")
     + "\n\nTotal: " + tk(total) + "\nPayment: " + payMethod + "\nPaid from: " + sender + "\nTrxID: " + trx
     + "\n\nName: " + name + "\nWhatsApp: " + phone + "\nEmail: " + ($("coEmail").value.trim() || "—");
+  if(currentCustomer){
+    lastOrderText += "\nAccount: " + currentCustomer.name + " (" + currentCustomer.phone + ")";
+  }
   $("orderSummary").textContent = lastOrderText;
   $("coForm").classList.add("hidden"); $("coDone").classList.remove("hidden");
   var link = waLink(lastOrderText); if(link){ window.open(link, "_blank"); }
@@ -1137,6 +1199,7 @@ $("placeOrder").addEventListener("click", function(){
     name: name, phone: phone,
     method: payMethod, sender: sender, trx: trx,
     time: new Date().toLocaleTimeString("en-GB", {hour: "2-digit", minute: "2-digit"}),
+    accountPhone: currentCustomer ? currentCustomer.phone : null,
     status: "Pending"
   });
   cart = []; updateCart();
@@ -1446,6 +1509,134 @@ $("copySource").addEventListener("click", function(){
     navigator.clipboard.writeText(sourceCodeText()).then(function(){ toast("সোর্স কোড কপি হয়েছে ✓"); });
   }
 });
+
+/* ============================================================
+   CUSTOMER ACCOUNTS — কাস্টমার অ্যাকাউন্ট (সাইন-আপ / লগইন)
+   এই সাইট একটাই HTML ফাইল, কোনো সার্ভার বা ডাটাবেস নেই — তাই
+   অ্যাকাউন্ট শুধু এই ব্রাউজারে পেজ খোলা থাকা পর্যন্ত মেমরিতে
+   থাকে; রিলোড করলে মুছে যায়। পাসওয়ার্ড সরাসরি রাখা হয় না,
+   শুধু তার SHA-256 হ্যাশ (অ্যাডমিন লগইনের মতোই পদ্ধতি)।
+   ============================================================ */
+var customerAccounts = [];   // এই সেশনে খোলা সব অ্যাকাউন্ট
+var currentCustomer = null;  // এখন লগইন করা কাস্টমার (না থাকলে null)
+
+function findAccount(phone){
+  for(var i = 0; i < customerAccounts.length; i++){
+    if(customerAccounts[i].phone === phone) return customerAccounts[i];
+  }
+  return null;
+}
+/* লগইন করা কাস্টমারের এই সেশনের অর্ডারগুলো (চেকআউটে ফোন দিয়ে স্ট্যাম্প করা) */
+function myOrders(){
+  if(!currentCustomer) return [];
+  return sessionOrders.filter(function(o){ return o.accountPhone === currentCustomer.phone; });
+}
+function renderAccountOrders(){
+  var list = myOrders();
+  $("acctOrders").innerHTML = list.length
+    ? list.map(function(o){
+        return "<div class='acct-order'>"
+          + "<div class='acct-order-head'><b>" + o.id + "</b>" + statusBadge(o.status) + "</div>"
+          + "<div class='acct-order-items'>" + o.items + "</div>"
+          + "<div class='acct-order-meta'>" + tk(o.total) + " · " + o.method + " · TrxID: " + o.trx + " · " + o.time + "</div>"
+          + "</div>";
+      }).join("")
+    : "<p class='empty' style='margin-bottom:16px'>এই অ্যাকাউন্টে এখনো কোনো অর্ডার নেই।<br>কার্টে প্রোডাক্ট যোগ করে চেকআউট করলেই অর্ডার এখানে দেখা যাবে।</p>";
+}
+function setLoggedIn(cust){
+  currentCustomer = cust;
+  var b = $("accountBtn");
+  b.textContent = cust.name.trim().charAt(0).toUpperCase();
+  b.title = cust.name + " — My Account";
+  /* চেকআউট ফর্মে অ্যাকাউন্টের তথ্য অটো বসিয়ে দেওয়া */
+  $("coName").value = cust.name;
+  $("coPhone").value = cust.phone;
+  $("coEmail").value = cust.email || "";
+}
+function setLoggedOut(){
+  currentCustomer = null;
+  var b = $("accountBtn");
+  b.textContent = "👤";
+  b.title = "My account — লগইন / সাইন-আপ";
+}
+function openAccount(){
+  $("acctAnon").classList.toggle("hidden", !!currentCustomer);
+  $("acctUser").classList.toggle("hidden", !currentCustomer);
+  if(currentCustomer){
+    $("acctHello").textContent = "👋 " + currentCustomer.name;
+    $("acctMeta").textContent = "📱 " + currentCustomer.phone + (currentCustomer.email ? " · ✉ " + currentCustomer.email : "");
+    renderAccountOrders();
+  }
+  $("accountModal").classList.add("open");
+  $("overlay").classList.add("open");
+}
+$("accountBtn").addEventListener("click", openAccount);
+$("acctContinue").addEventListener("click", closeAll);
+$("acctLogout").addEventListener("click", function(){
+  setLoggedOut(); closeAll(); toast("লগআউট হয়েছে — আবার দেখা হবে 👋");
+});
+
+/* --- সাইন-আপ / লগইন ট্যাব --- */
+function showAuthTab(signup){
+  $("tabSignup").classList.toggle("on", signup);
+  $("tabLogin").classList.toggle("on", !signup);
+  $("signupPane").classList.toggle("hidden", !signup);
+  $("loginPane").classList.toggle("hidden", signup);
+  $("suError").textContent = ""; $("liError").textContent = "";
+}
+$("tabSignup").addEventListener("click", function(){ showAuthTab(true); });
+$("tabLogin").addEventListener("click", function(){ showAuthTab(false); });
+
+/* --- সাইন-আপ: নতুন অ্যাকাউন্ট খোলা --- */
+function doSignup(){
+  var name  = $("suName").value.trim(),
+      phone = $("suPhone").value.replace(/\D/g, ""),
+      email = $("suEmail").value.trim(),
+      pass  = $("suPass").value;
+  var err = $("suError");
+  if(name.length < 2){ err.textContent = "আপনার নাম লিখুন।"; return; }
+  if(phone.length < 10){ err.textContent = "সঠিক ফোন (WhatsApp) নম্বর দিন।"; return; }
+  if(pass.length < 4){ err.textContent = "পাসওয়ার্ড কমপক্ষে 4 অক্ষরের হতে হবে।"; return; }
+  if(findAccount(phone)){
+    showAuthTab(false);
+    $("liPhone").value = $("suPhone").value.trim();
+    $("liError").textContent = "এই নম্বর দিয়ে আগেই অ্যাকাউন্ট আছে — পাসওয়ার্ড দিয়ে লগইন করুন।";
+    return;
+  }
+  sha256Hex(pass).then(function(hash){
+    var cust = { name: name, phone: phone, email: email, passHash: hash };
+    customerAccounts.push(cust);
+    setLoggedIn(cust);
+    $("suPass").value = "";
+    toast("অ্যাকাউন্ট তৈরি হয়েছে — স্বাগতম, " + name + " ✓");
+    openAccount();
+  });
+}
+$("suGo").addEventListener("click", doSignup);
+$("suPass").addEventListener("keydown", function(e){ if(e.key === "Enter"){ doSignup(); } });
+
+/* --- লগইন: আগের অ্যাকাউন্টে ফেরা --- */
+function doLogin(){
+  var phone = $("liPhone").value.replace(/\D/g, ""),
+      pass  = $("liPass").value;
+  var err = $("liError");
+  var cust = findAccount(phone);
+  if(!cust){ err.textContent = "এই নম্বর দিয়ে কোনো অ্যাকাউন্ট পাওয়া যায়নি — আগে Sign Up ট্যাব থেকে অ্যাকাউন্ট খুলুন।"; return; }
+  if(!pass){ err.textContent = "পাসওয়ার্ড লিখুন।"; return; }
+  sha256Hex(pass).then(function(hash){
+    if(hash !== cust.passHash){
+      err.textContent = "ভুল পাসওয়ার্ড — আবার চেষ্টা করুন।";
+      $("liPass").value = ""; $("liPass").focus();
+      return;
+    }
+    setLoggedIn(cust);
+    err.textContent = ""; $("liPass").value = "";
+    toast("স্বাগতম ফিরে এলেন, " + cust.name + " ✓");
+    openAccount();
+  });
+}
+$("liGo").addEventListener("click", doLogin);
+$("liPass").addEventListener("keydown", function(e){ if(e.key === "Enter"){ doLogin(); } });
 
 render(); renderReviews(); updateCart();
 </script>
