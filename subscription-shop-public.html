@@ -32,19 +32,30 @@ img{max-width:100%}
 @media (prefers-reduced-motion:reduce){.ticker-track{animation:none}}
 /* header */
 header{position:sticky;top:10px;z-index:60}
-.nav{max-width:1180px;margin:10px auto 0;padding:8px 12px;background:rgba(13,22,43,.92);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:999px;display:flex;align-items:center;gap:10px}
+/* সাদা পিল-শেপ নেভবার — দুই থিমেই সাদা, বামে লোগো, ডানে আইকন সারি */
+.nav{position:relative;max-width:1180px;margin:10px auto 0;padding:10px 16px 10px 12px;background:#fff;border:1px solid #e4ecf8;border-radius:999px;display:flex;align-items:center;gap:12px;box-shadow:0 14px 34px rgba(2,6,16,.45)}
 .logo{display:flex;align-items:center;gap:9px;font-weight:900;letter-spacing:.04em;font-size:17px;padding:6px 8px;white-space:nowrap}
+header .logo{color:#0d1a33}
 .logo-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--cyan));display:grid;place-items:center;font-size:15px;color:#fff;box-shadow:0 6px 18px rgba(31,123,255,.45)}
 .logo small{display:block;font-size:9px;letter-spacing:.28em;color:var(--muted);font-weight:700}
-.nav-links{display:flex;gap:2px;margin-left:6px}
-.nav-links a{padding:9px 12px;border-radius:999px;font-size:13.5px;font-weight:700;color:#dbe7ff;white-space:nowrap}
-.nav-links a:hover{background:#182747}
-.nav-right{margin-left:auto;display:flex;align-items:center;gap:8px}
-.searchbox{display:flex;align-items:center;gap:6px;background:#0d1a33;border:1px solid #2f4a7d;border-radius:999px;padding:0 12px}
-.searchbox input{background:none;border:0;outline:0;color:#fff;width:110px;font-size:13.5px;min-height:38px}
-.searchbox input::placeholder{color:#8ba3c9}
-body.light .searchbox input::placeholder{color:#687f9f}
-.iconbtn{position:relative;width:42px;height:42px;border-radius:50%;border:1px solid #2f4a7d;background:#0d1a33;color:#fff;display:grid;place-items:center;font-size:17px;flex:none}
+header .logo small{color:#8494b3}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:6px}
+.iconbtn{position:relative;width:44px;height:44px;border-radius:50%;border:0;background:transparent;color:#16233c;display:grid;place-items:center;flex:none;cursor:pointer}
+.iconbtn:hover{background:#eef3fb}
+.iconbtn svg{width:23px;height:23px;display:block}
+#themeBtn .ic-moon{display:none}
+body.light #themeBtn .ic-moon{display:block}
+body.light #themeBtn .ic-sun{display:none}
+/* পিলের নিচে খোলা সার্চ প্যানেল ও হ্যামবার্গার মেনু — দুটোই সাদা কার্ড */
+.nav-search{position:absolute;top:calc(100% + 10px);left:0;right:0;background:#fff;border:1px solid #e4ecf8;border-radius:20px;padding:12px;box-shadow:0 22px 44px rgba(2,6,16,.35)}
+.searchbox{display:flex;align-items:center;gap:8px;background:#f2f6fd;border:1px solid #dbe5f5;border-radius:999px;padding:0 14px;color:#5b6f92}
+.searchbox svg{width:18px;height:18px;flex:none}
+.searchbox input{background:none;border:0;outline:0;color:#0d1a33;width:100%;font-size:14px;min-height:42px}
+.searchbox input::placeholder{color:#8494b3}
+.nav-menu{position:absolute;top:calc(100% + 10px);right:0;width:min(300px,88vw);background:#fff;border:1px solid #e4ecf8;border-radius:20px;padding:10px;box-shadow:0 22px 44px rgba(2,6,16,.35)}
+.nav-menu a,.nav-menu .menu-item{display:flex;align-items:center;gap:10px;width:100%;padding:11px 12px;border-radius:12px;font-size:14.5px;font-weight:700;color:#16233c;background:none;border:0;text-align:left;cursor:pointer;font-family:inherit}
+.nav-menu a:hover,.nav-menu .menu-item:hover{background:#eef3fb}
+.nav-menu hr{border:0;border-top:1px solid #e4ecf8;margin:8px 4px}
 .cart-count{position:absolute;top:-4px;right:-4px;background:var(--blue);color:#fff;font-size:11px;font-weight:800;min-width:20px;height:20px;border-radius:999px;display:grid;place-items:center;padding:0 5px}
 /* hero — full-width banner, same layout as reference */
 .hero{margin-top:14px;background:radial-gradient(1000px 520px at 82% 8%,rgba(31,123,255,.55),transparent 60%),radial-gradient(760px 420px at 6% 96%,rgba(56,214,245,.16),transparent 60%),linear-gradient(120deg,#04070f,#081a3d 55%,#050b18);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}
@@ -123,16 +134,6 @@ section{padding:46px 0 6px}
 .ped{width:118px;height:15px;border-radius:50%;background:radial-gradient(closest-side,#12294d 30%,#0a1830 62%,transparent 75%);border-bottom:2px solid rgba(56,150,255,.55);margin-top:-4px;box-shadow:0 10px 22px rgba(0,0,0,.55)}
 .picframe{display:block;width:min(246px,88%);aspect-ratio:8/5;background:#fff;border-radius:14px;padding:0;overflow:hidden;box-shadow:0 14px 30px rgba(0,0,0,.45)}
 .picframe img{width:100%;height:100%;object-fit:cover;display:block}
-/* brand logo strip — the 10 brands the owner asked for, logos front and centre */
-.logostrip{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-.logochip{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:0;overflow:hidden;color:var(--text);text-align:center;transition:border-color .15s}
-.logochip:hover{border-color:var(--blue)}
-.logochip .logoimg{display:block;aspect-ratio:8/5;background:#fff}
-.logochip .logoimg img{width:100%;height:100%;object-fit:cover;display:block}
-.logochip .logoname{display:block;padding:9px 6px;font-weight:800;font-size:13.5px}
-@media(max-width:1020px){.logostrip{grid-template-columns:repeat(4,1fr)}}
-@media(max-width:760px){.logostrip{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:420px){.logostrip{grid-template-columns:repeat(2,1fr)}.logochip .logoname{font-size:12.5px}}
 .feat-logo{width:64px;height:64px;border-radius:16px;object-fit:cover;background:#fff;box-shadow:0 14px 30px rgba(0,0,0,.5)}
 .disc{position:absolute;top:10px;right:10px;background:var(--blue);color:#fff;font-size:11.5px;font-weight:800;border-radius:7px;padding:4px 8px;z-index:3}
 .card-body{padding:14px 15px 16px}
@@ -269,11 +270,7 @@ body.light .coupon-row input{background:#fff;color:#0b1526}
 .hidden{display:none!important}
 /* light theme (header sun toggle) */
 body.light{--bg:#e9eff9;--bg2:#dde7f6;--card:#ffffff;--card2:#ffffff;--line:#c7d5ee;--text:#0b1526;--muted:#43597c;--muted2:#687f9f}
-body.light .nav{background:rgba(255,255,255,.93)}
-body.light .nav-links a{color:#22334f}
-body.light .nav-links a:hover{background:#e3ecfb}
-body.light .searchbox,body.light .iconbtn{background:#fff;color:#0b1526;border-color:#c7d5ee}
-body.light .searchbox input{color:#0b1526}
+body.light .nav{background:#fff}
 body.light .hero{background:radial-gradient(1000px 520px at 82% 8%,rgba(31,123,255,.35),transparent 60%),linear-gradient(120deg,#cfe2ff,#eaf2ff 55%,#d9e8ff)}
 body.light .hero .tagline{color:#22334f}
 body.light .hbadge{background:rgba(255,255,255,.75)}
@@ -301,7 +298,7 @@ body.light .featured{background:radial-gradient(600px 300px at 8% 50%,rgba(31,12
 body.light .hero h1{text-shadow:none}
 body.light header .nav{box-shadow:0 14px 34px rgba(23,52,105,.16)}
 body.light .card:hover{box-shadow:0 18px 36px rgba(23,52,105,.18),0 0 0 1px rgba(59,157,255,.3)}
-body.light .logochip:hover,body.light .review:hover{box-shadow:0 14px 30px rgba(23,52,105,.15)}
+body.light .review:hover{box-shadow:0 14px 30px rgba(23,52,105,.15)}
 body.light .featured,body.light .help,body.light .rating-box{box-shadow:0 14px 30px rgba(23,52,105,.12)}
 body.light .drawer{box-shadow:-24px 0 60px rgba(23,52,105,.25)}
 body.light .modal-card{box-shadow:0 -18px 60px rgba(23,52,105,.3)}
@@ -310,14 +307,14 @@ body.light .verified{color:#1f6dff}
 /* responsive */
 @media(max-width:1020px){.grid{grid-template-columns:repeat(3,1fr)}.reviews{grid-template-columns:1fr 1fr}.foot{grid-template-columns:1fr 1fr}}
 @media(max-width:760px){
-  .nav-links{display:none}
-  .nav{gap:6px;padding:8px;border-radius:24px;flex-wrap:wrap}
-  .logo{padding:4px 2px}.logo-txt{display:none}
-  .nav-right{flex:1 1 100%;order:3;min-width:0;gap:6px;margin-left:0;flex-wrap:wrap}
-  .searchbox{flex:1 1 100%;order:-1;min-width:0;padding:0 12px}
-  .searchbox input{width:100%;min-width:0}
-  .iconbtn{width:38px;height:38px;font-size:15px}
-  .iconbtn.hide-sm{display:none}
+  .nav{gap:4px;padding:8px 10px 8px 8px;border-radius:999px;flex-wrap:nowrap}
+  header .logo{padding:4px 2px;font-size:15px;gap:7px}
+  header .logo-mark{width:32px;height:32px;border-radius:9px;font-size:13px}
+  header .logo small{font-size:8px;letter-spacing:.22em}
+  .nav-right{gap:2px;flex:none;margin-left:auto;flex-wrap:nowrap}
+  .iconbtn{width:38px;height:38px}
+  .iconbtn svg{width:20px;height:20px}
+  .nav-search{padding:10px}
   .searchbox input,.field input,.field select{font-size:16px}
   .wrap{padding:0 14px}
   .hero-in{padding:30px 14px 20px}
@@ -405,14 +402,9 @@ body.light .hstat{background:rgba(255,255,255,.72)}
 .card{transition:transform .2s,box-shadow .2s,border-color .2s}
 .card:hover{transform:translateY(-5px);border-color:rgba(59,157,255,.75);box-shadow:0 22px 44px rgba(2,8,20,.55),0 0 0 1px rgba(59,157,255,.25)}
 .picframe img{transition:transform .35s ease}
-.card:hover .picframe img,.logochip:hover .logoimg img{transform:scale(1.05)}
+.card:hover .picframe img{transform:scale(1.05)}
 .disc{background:linear-gradient(135deg,#ffb02e,#f5820b);color:#231300;box-shadow:0 6px 16px rgba(245,150,40,.45)}
 .card-body .price b{letter-spacing:-.01em}
-/* brand strip */
-.logochip{transition:transform .2s,box-shadow .2s,border-color .2s}
-.logochip:hover{transform:translateY(-4px);border-color:rgba(59,157,255,.75);box-shadow:0 16px 32px rgba(2,8,20,.5)}
-.logochip .logoimg{overflow:hidden}
-.logochip .logoimg img{transition:transform .35s ease}
 /* chips */
 .chip{transition:background .15s,border-color .15s,transform .15s}
 .chip:hover{border-color:var(--blue2);transform:translateY(-1px)}
@@ -442,7 +434,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;b
 /* whatsapp float pulse */
 .wa-float{animation:wapulse 2.6s ease-out infinite}
 @keyframes wapulse{0%{box-shadow:0 12px 30px rgba(37,211,102,.4),0 0 0 0 rgba(37,211,102,.45)}70%{box-shadow:0 12px 30px rgba(37,211,102,.4),0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 12px 30px rgba(37,211,102,.4),0 0 0 0 rgba(37,211,102,0)}}
-@media (prefers-reduced-motion:reduce){.wa-float,.phone{animation:none}.card,.logochip,.review,.hbadge,.btn,.paylogo{transition:none}.paylogo:hover{transform:none}}
+@media (prefers-reduced-motion:reduce){.wa-float,.phone{animation:none}.card,.review,.hbadge,.btn,.paylogo{transition:none}.paylogo:hover{transform:none}}
 @media(max-width:760px){.hstat{min-width:calc(50% - 5px);flex:1}}
 
 /* ==========================================================================
@@ -564,6 +556,22 @@ body.light .acct-tabs button.on{ background:var(--blue); border-color:var(--blue
 .acct-order-items{ white-space:pre-line; font-size:13.5px; color:var(--muted); line-height:1.65; }
 .acct-order-meta{ margin-top:8px; font-size:13px; color:var(--muted); }
 
+/* --- ডেলিভারি ডিটেইলস: অ্যাডমিনের বক্স + কাস্টমারের My Account ভিউ --- */
+.admin-table tr.deliv-row td{ background:rgba(31,123,255,.05); padding:14px; }
+.deliv-box{ border:1px dashed rgba(90,160,255,.45); border-radius:12px; padding:14px; }
+.deliv-head{ font-weight:800; font-size:14px; margin-bottom:10px; }
+.deliv-head small{ color:var(--muted); font-weight:600; }
+.deliv-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; }
+.deliv-field{ display:grid; gap:5px; font-size:12px; font-weight:700; color:var(--muted); }
+.deliv-field input{ width:100%; background:var(--bg2); border:1px solid var(--line); border-radius:9px; color:var(--text); padding:9px 10px; font-size:14px; outline:0; }
+.deliv-field input:focus{ border-color:var(--blue); }
+.deliv-actions{ display:flex; gap:9px; flex-wrap:wrap; margin-top:12px; align-items:center; }
+.acct-deliv{ margin-top:12px; border:1px solid rgba(34,197,94,.45); background:rgba(34,197,94,.07); border-radius:12px; padding:12px 14px; }
+.acct-deliv-title{ font-weight:800; font-size:13.5px; margin-bottom:6px; }
+.acct-deliv-row{ display:flex; justify-content:space-between; gap:12px; font-size:13.5px; padding:4px 0; }
+.acct-deliv-row span{ color:var(--muted); flex:none; }
+.acct-deliv-row b{ text-align:right; word-break:break-all; }
+
 /* --- মোবাইল: স্ট্যাট ২ কলাম, টেবিল কার্ড আকারে --- */
 @media(max-width:760px){
   .admin-stats{ grid-template-columns:1fr 1fr; }
@@ -584,16 +592,24 @@ try{ if(window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").
 <header><div class="wrap" style="padding:0 8px">
   <nav class="nav">
     <a class="logo" href="#top"><span class="logo-mark">N</span><span class="logo-txt">NAHID<small>OTT</small></span></a>
-    <div class="nav-links">
-      <a href="#shop">All Products</a><a href="#shop" data-navcat="streaming">Streaming &amp; OTT Platforms</a>
-      <a href="#shop" data-navcat="music">Music &amp; Audio</a><a href="#shop" data-navcat="storage">Storage</a><a href="#shop" data-navcat="vpn">Vpn</a>
-    </div>
     <div class="nav-right">
-      <label class="searchbox">🔍<input id="searchInput" type="search" placeholder="Search products" aria-label="Search products"></label>
-      <button class="iconbtn" id="themeBtn" title="Dark / light mode" aria-label="Toggle dark or light mode">☀️</button>
-      <button class="iconbtn" id="trackBtn" title="Track order" aria-label="Track order">🚚</button>
-      <button class="iconbtn" id="accountBtn" title="My account — লগইন / সাইন-আপ" aria-label="Open my account">👤</button>
-      <button class="iconbtn" id="cartBtn" aria-label="Open cart">🛒<span class="cart-count hidden" id="cartCount">0</span></button>
+      <button class="iconbtn" id="searchBtn" title="Search products" aria-label="Search products" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg></button>
+      <button class="iconbtn" id="themeBtn" title="Dark / light mode" aria-label="Toggle dark or light mode"><svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+      <button class="iconbtn" id="cartBtn" aria-label="Open cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-count hidden" id="cartCount">0</span></button>
+      <button class="iconbtn" id="menuBtn" title="Menu" aria-label="Open menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+    <div class="nav-search hidden" id="navSearch">
+      <label class="searchbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg><input id="searchInput" type="search" placeholder="Search products" aria-label="Search products"></label>
+    </div>
+    <div class="nav-menu hidden" id="navMenu">
+      <a href="#shop">🛍️ All Products</a>
+      <a href="#shop" data-navcat="streaming">🎬 Streaming &amp; OTT Platforms</a>
+      <a href="#shop" data-navcat="music">🎵 Music &amp; Audio</a>
+      <a href="#shop" data-navcat="storage">💾 Storage</a>
+      <a href="#shop" data-navcat="vpn">🛡️ Vpn</a>
+      <hr>
+      <button class="menu-item" id="trackBtn">🚚 Track order</button>
+      <button class="menu-item" id="accountBtn" title="My account — লগইন / সাইন-আপ">👤 My Account</button>
     </div>
   </nav>
 </div></header>
@@ -678,23 +694,6 @@ try{ if(window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").
           </div>
           <button class="btn btn-blue" data-open-product="netflix-solo">Order now →</button>
         </div>
-      </div>
-    </section>
-
-    <!-- BRAND LOGOS -->
-    <section style="padding-top:30px">
-      <div class="sec-head"><h2>Shop by brand</h2><span style="color:var(--muted);font-size:14px">লোগোতে চাপ দিলেই প্ল্যান ও দাম</span></div>
-      <div class="logostrip">
-        <button class="logochip" data-open-product="gemini-5tb"><span class="logoimg"><img data-logo="google-one-5tb.jpg" alt="Gemini Pro + 5TB Storage logo" width="800" height="500"></span><span class="logoname">Gemini Pro + 5TB</span></button>
-        <button class="logochip" data-open-product="netflix-solo"><span class="logoimg"><img data-logo="netflix.png" alt="Netflix logo" width="800" height="500"></span><span class="logoname">Netflix</span></button>
-        <button class="logochip" data-open-product="prime"><span class="logoimg"><img data-logo="prime-video.png" alt="Amazon Prime Video logo" width="800" height="500"></span><span class="logoname">Amazon Prime Video</span></button>
-        <button class="logochip" data-open-product="hbo-max"><span class="logoimg"><img data-logo="hbo-max.png" alt="HBO Max logo" width="800" height="500"></span><span class="logoname">HBO Max</span></button>
-        <button class="logochip" data-open-product="spotify"><span class="logoimg"><img data-logo="spotify.webp" alt="Spotify logo" width="800" height="500"></span><span class="logoname">Spotify</span></button>
-        <button class="logochip" data-open-product="disney-hulu"><span class="logoimg"><img data-logo="disney-hulu.jpg" alt="Disney+ + Hulu logo" width="800" height="500"></span><span class="logoname">Disney+ + Hulu</span></button>
-        <button class="logochip" data-open-product="apple-tv"><span class="logoimg"><img data-logo="apple-tv.jpg" alt="Apple TV+ logo" width="800" height="500"></span><span class="logoname">Apple TV+</span></button>
-        <button class="logochip" data-open-product="bongo"><span class="logoimg"><img data-logo="bongo.jpg" alt="Bongo logo" width="800" height="500"></span><span class="logoname">Bongo</span></button>
-        <button class="logochip" data-open-product="chorki"><span class="logoimg"><img data-logo="chorki.png" alt="Chorki logo" width="800" height="500"></span><span class="logoname">Chorki</span></button>
-        <button class="logochip" data-open-product="nordvpn"><span class="logoimg"><img data-logo="nordvpn.jpg" alt="Nord VPN logo" width="800" height="500"></span><span class="logoname">Nord VPN</span></button>
       </div>
     </section>
 
@@ -967,7 +966,7 @@ try{ if(window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").
 
     <!-- অর্ডার -->
     <section class="admin-view" id="aview-orders">
-      <p class="admin-note">এই পেজ খোলা থাকা অবস্থায় চেকআউট থেকে আসা অর্ডারগুলো এখানে জমা হয়। ডেলিভারি শেষ হলে <b>Mark delivered</b> চাপুন।</p>
+      <p class="admin-note">এই পেজ খোলা থাকা অবস্থায় চেকআউট থেকে আসা অর্ডারগুলো এখানে জমা হয়। প্রতিটা অর্ডারের নিচের <b>Delivery details</b> বক্সে ইমেইল / পাসওয়ার্ড / প্রোফাইল / PIN / মেয়াদ লিখে <b>Deliver</b> চাপলেই অর্ডার Delivered হবে — কাস্টমার একই ব্রাউজারে <b>My Account</b> খুললে ওই অর্ডারের নিচে ডিটেইলসগুলো দেখতে পাবেন।<br>⚠️ নোট: এই সাইটটা সার্ভার ছাড়া একটাই HTML ফাইল, তাই ডেলিভারি ডিটেইলস শুধু এই ব্রাউজারের এই সেশনেই থাকে — পেজ রিলোড করলে মুছে যাবে, অন্য ফোন/ডিভাইসে পৌঁছাবে না। সব ডিভাইসে স্থায়ীভাবে পৌঁছাতে সার্ভার ভার্সন লাগবে।</p>
       <div class="admin-table-wrap">
         <table class="admin-table">
           <thead><tr><th>অর্ডার</th><th>আইটেম</th><th>পেমেন্ট</th><th class="num">মোট</th><th>অবস্থা</th><th></th></tr></thead>
@@ -1296,7 +1295,7 @@ $("placeOrder").addEventListener("click", function(){
     method: payMethod, sender: sender, trx: trx,
     time: new Date().toLocaleTimeString("en-GB", {hour: "2-digit", minute: "2-digit"}),
     accountPhone: currentCustomer ? currentCustomer.phone : null,
-    status: "Pending", seen: false
+    status: "Pending", seen: false, delivery: null
   });
   notifyNewOrder();
   appliedCoupon = null; $("coCoupon").value = ""; $("couponMsg").textContent = ""; $("couponMsg").className = "coupon-msg";
@@ -1340,13 +1339,44 @@ function syncSupportButtons(){
   $("footTg").classList.toggle("hidden", !CONFIG.telegram);
 }
 syncSupportButtons();
-/* header utility buttons */
-function syncThemeIcon(){ $("themeBtn").textContent = document.body.classList.contains("light") ? "🌙" : "☀️"; }
+/* header utility buttons — থিম আইকন CSS দিয়ে বদলায় (body.light-এ চাঁদ, নইলে সূর্য) */
+function syncThemeIcon(){ $("themeBtn").dataset.mode = document.body.classList.contains("light") ? "light" : "dark"; }
 syncThemeIcon();
 $("themeBtn").addEventListener("click", function(){
   var light = document.body.classList.toggle("light");
   syncThemeIcon();
   toast(light ? "Light mode" : "Dark mode");
+});
+/* পিল নেভবার: সার্চ আইকনে সার্চ প্যানেল, হ্যামবার্গারে মেনু প্যানেল */
+function closeNavPanels(){
+  $("navSearch").classList.add("hidden"); $("navMenu").classList.add("hidden");
+  $("searchBtn").setAttribute("aria-expanded", "false"); $("menuBtn").setAttribute("aria-expanded", "false");
+}
+$("searchBtn").addEventListener("click", function(){
+  var willOpen = $("navSearch").classList.contains("hidden");
+  closeNavPanels();
+  if(willOpen){
+    $("navSearch").classList.remove("hidden");
+    $("searchBtn").setAttribute("aria-expanded", "true");
+    $("searchInput").focus();
+  }
+});
+$("menuBtn").addEventListener("click", function(){
+  var willOpen = $("navMenu").classList.contains("hidden");
+  closeNavPanels();
+  if(willOpen){
+    $("navMenu").classList.remove("hidden");
+    $("menuBtn").setAttribute("aria-expanded", "true");
+  }
+});
+$("navMenu").addEventListener("click", function(e){
+  if(e.target.closest("a,button")) closeNavPanels();
+});
+document.addEventListener("click", function(e){
+  if(!e.target.closest(".nav")) closeNavPanels();
+});
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape") closeNavPanels();
 });
 /* track */
 $("trackBtn").addEventListener("click", function(){ $("trackModal").classList.add("open"); $("overlay").classList.add("open"); });
@@ -1642,6 +1672,35 @@ $("adminAddForm").addEventListener("submit", function(e){
 });
 
 /* ---------- ৪) অর্ডার ---------- */
+/* ডেলিভারি ডিটেইলসের ঘরগুলো — অ্যাডমিন বক্স আর কাস্টমারের My Account
+   দুই জায়গাতেই এই একই তালিকা ব্যবহার হয়। */
+var DELIV_FIELDS = [
+  { k: "email",   label: "Email",          ph: "delivery@email.com" },
+  { k: "pass",    label: "Password",       ph: "••••••••" },
+  { k: "profile", label: "Profile",        ph: "Profile 1" },
+  { k: "pin",     label: "PIN",            ph: "1234" },
+  { k: "expiry",  label: "মেয়াদ (Expiry)", ph: "যেমন: 14 Dec 2026" }
+];
+function esc(s){
+  return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+  });
+}
+/* প্রতিটা অর্ডারের নিচে Delivery details বক্সের সারি */
+function deliveryRow(o, i){
+  var d = o.delivery || {};
+  var fields = DELIV_FIELDS.map(function(f){
+    return "<label class='deliv-field'><span>" + f.label + "</span>"
+      + "<input type='text' data-didx='" + i + "' data-dfield='" + f.k + "' value='" + esc(d[f.k] || "") + "' placeholder='" + f.ph + "' autocomplete='off'></label>";
+  }).join("");
+  return "<tr class='deliv-row'><td colspan='6'><div class='deliv-box'>"
+    + "<div class='deliv-head'>🚚 Delivery details <small>— Deliver চাপলে কাস্টমার My Account-এ এগুলোই দেখবেন (একই ব্রাউজার/সেশন)</small></div>"
+    + "<div class='deliv-grid'>" + fields + "</div>"
+    + "<div class='deliv-actions'>"
+    +   "<button class='btn-sm blue' data-dodeliver='" + i + "'>" + (o.status === "Delivered" ? "✓ Delivered — ডিটেইলস আপডেট করুন" : "🚚 Deliver") + "</button>"
+    +   (o.status === "Delivered" ? "<button class='btn-sm' data-dpending='" + i + "'>Mark pending</button>" : "")
+    + "</div></div></td></tr>";
+}
 function renderAdminOrders(){
   $("adminOrderRows").innerHTML = sessionOrders.length
     ? sessionOrders.map(function(o, i){
@@ -1651,23 +1710,46 @@ function renderAdminOrders(){
           + "<td>" + o.method + "<br><small style='color:var(--muted)'>From " + o.sender + "<br>TrxID: " + o.trx + "</small></td>"
           + "<td class='num'><b>" + tk(o.total) + "</b>" + (o.discount ? "<br><small style='color:var(--green)'>কুপন " + o.coupon + ": −" + tk(o.discount) + "</small>" : "") + "</td>"
           + "<td>" + statusBadge(o.status) + "</td>"
-          + "<td>" + (o.status === "Pending"
-              ? "<button class='btn-sm blue' data-deliver='" + i + "'>Mark delivered</button>"
-              : "<button class='btn-sm' data-deliver='" + i + "'>Mark pending</button>")
-            + "</td></tr>";
+          + "<td>" + (o.status === "Delivered"
+              ? "<small style='color:var(--green);font-weight:700'>✓ Delivered</small>"
+              : "<small style='color:var(--muted)'>নিচের বক্স থেকে<br>Deliver করুন ↓</small>")
+            + "</td></tr>"
+          + deliveryRow(o, i);
       }).join("")
     : "<tr><td colspan='6' class='empty'>এখনো কোনো অর্ডার আসেনি। শপ থেকে চেকআউট করলেই এখানে দেখা যাবে।</td></tr>";
 }
 
-/* ডেলিভারি অবস্থা বদলানো */
+/* Deliver: বক্সের ডিটেইলস অর্ডারে জমা করে স্ট্যাটাস Delivered করা —
+   ডিটেইলস শুধু এই ব্রাউজারের এই সেশনেই থাকে (sessionOrders-এ)। */
 document.addEventListener("click", function(e){
-  var d = e.target.closest("[data-deliver]");
-  if(!d) return;
-  var o = sessionOrders[parseInt(d.getAttribute("data-deliver"), 10)];
-  if(!o) return;
-  o.status = (o.status === "Pending") ? "Delivered" : "Pending";
-  renderAdminOrders(); renderAdminDash();
-  toast(o.id + " → " + o.status);
+  var b = e.target.closest("[data-dodeliver]");
+  if(b){
+    var i = parseInt(b.getAttribute("data-dodeliver"), 10);
+    var o = sessionOrders[i];
+    if(!o) return;
+    var d = {};
+    document.querySelectorAll("input[data-didx='" + i + "']").forEach(function(inp){
+      d[inp.getAttribute("data-dfield")] = inp.value.trim();
+    });
+    if(!d.email && !d.pass && !d.profile && !d.pin && !d.expiry){
+      toast("আগে অন্তত একটা ডেলিভারি ডিটেইল লিখুন"); return;
+    }
+    o.delivery = d;
+    o.status = "Delivered";
+    renderAdminOrders(); renderAdminDash();
+    if(currentCustomer) renderAccountOrders();
+    toast("✓ " + o.id + " Delivered — ডিটেইলস My Account-এ দেখা যাবে (একই ব্রাউজার/সেশন)");
+    return;
+  }
+  var p = e.target.closest("[data-dpending]");
+  if(p){
+    var o2 = sessionOrders[parseInt(p.getAttribute("data-dpending"), 10)];
+    if(!o2) return;
+    o2.status = "Pending";
+    renderAdminOrders(); renderAdminDash();
+    if(currentCustomer) renderAccountOrders();
+    toast(o2.id + " → Pending");
+  }
 });
 
 /* ---------- ৫) সেটিংস ---------- */
@@ -1719,6 +1801,15 @@ function myOrders(){
   if(!currentCustomer) return [];
   return sessionOrders.filter(function(o){ return o.accountPhone === currentCustomer.phone; });
 }
+/* Delivered অর্ডারের নিচে অ্যাডমিনের দেওয়া ডেলিভারি ডিটেইলস */
+function deliveryBlock(d){
+  if(!d) return "";
+  var rows = DELIV_FIELDS.filter(function(f){ return d[f.k]; }).map(function(f){
+    return "<div class='acct-deliv-row'><span>" + f.label + "</span><b>" + esc(d[f.k]) + "</b></div>";
+  }).join("");
+  if(!rows) return "";
+  return "<div class='acct-deliv'><div class='acct-deliv-title'>🚚 আপনার ডেলিভারি ডিটেইলস</div>" + rows + "</div>";
+}
 function renderAccountOrders(){
   var list = myOrders();
   $("acctOrders").innerHTML = list.length
@@ -1727,6 +1818,7 @@ function renderAccountOrders(){
           + "<div class='acct-order-head'><b>" + o.id + "</b>" + statusBadge(o.status) + "</div>"
           + "<div class='acct-order-items'>" + o.items + "</div>"
           + "<div class='acct-order-meta'>" + tk(o.total) + " · " + o.method + " · TrxID: " + o.trx + " · " + o.time + "</div>"
+          + (o.status === "Delivered" ? deliveryBlock(o.delivery) : "")
           + "</div>";
       }).join("")
     : "<p class='empty' style='margin-bottom:16px'>এই অ্যাকাউন্টে এখনো কোনো অর্ডার নেই।<br>কার্টে প্রোডাক্ট যোগ করে চেকআউট করলেই অর্ডার এখানে দেখা যাবে।</p>";
@@ -1734,7 +1826,7 @@ function renderAccountOrders(){
 function setLoggedIn(cust){
   currentCustomer = cust;
   var b = $("accountBtn");
-  b.textContent = cust.name.trim().charAt(0).toUpperCase();
+  b.textContent = "👤 My Account — " + cust.name;
   b.title = cust.name + " — My Account";
   /* চেকআউট ফর্মে অ্যাকাউন্টের তথ্য অটো বসিয়ে দেওয়া */
   $("coName").value = cust.name;
@@ -1744,7 +1836,7 @@ function setLoggedIn(cust){
 function setLoggedOut(){
   currentCustomer = null;
   var b = $("accountBtn");
-  b.textContent = "👤";
+  b.textContent = "👤 My Account";
   b.title = "My account — লগইন / সাইন-আপ";
 }
 function openAccount(){
