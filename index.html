@@ -282,6 +282,80 @@ body.light .foot a{color:#2c4160}
   .paybar .lbl{border-right:0;padding-right:0}
 }
 @media(max-width:420px){.grid{grid-template-columns:1fr 1fr}.card-body h3{font-size:14.5px}.price b{font-size:17px}}
+/* ===== beauty polish pass ===== */
+::selection{background:var(--blue);color:#fff}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+body{background:radial-gradient(1100px 480px at 85% -80px,rgba(31,123,255,.14),transparent 60%),radial-gradient(900px 520px at -12% 32%,rgba(56,214,245,.05),transparent 60%),var(--bg)}
+section{scroll-margin-top:96px}
+header .nav{box-shadow:0 14px 34px rgba(2,6,16,.45)}
+.ticker{-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+/* hero glow + stats */
+.hero{position:relative}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(560px 300px at 70% 18%,rgba(56,214,245,.15),transparent 65%);pointer-events:none}
+.hero-in{position:relative}
+.hero h1{text-shadow:0 12px 42px rgba(0,0,0,.4)}
+.hbadge{transition:transform .18s,box-shadow .18s}
+.hbadge:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(31,123,255,.35),inset 0 0 18px rgba(31,123,255,.12)}
+.hero-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.hstat{border:1px solid var(--line);background:rgba(10,20,40,.55);border-radius:14px;padding:11px 16px;min-width:118px}
+.hstat b{display:block;font-size:19px;line-height:1.1}
+.hstat span{font-size:11.5px;color:var(--muted);letter-spacing:.03em}
+body.light .hstat{background:rgba(255,255,255,.72)}
+.phone{animation:floaty 7s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:rotate(1.5deg) translateY(0)}50%{transform:rotate(1.5deg) translateY(-8px)}}
+/* buttons */
+.btn{transition:transform .18s,box-shadow .18s,background .18s}
+.btn:hover{transform:translateY(-2px)}
+.btn-blue{background:linear-gradient(135deg,#2f8bff,#1f6dff 55%,#1557d6);box-shadow:0 12px 28px rgba(31,123,255,.45)}
+.btn-blue:hover{box-shadow:0 18px 38px rgba(31,123,255,.55)}
+.btn-wa:hover{box-shadow:0 14px 30px rgba(37,211,102,.4)}
+.btn-green:hover{box-shadow:0 14px 30px rgba(34,197,94,.4)}
+/* section headings */
+.sec-head h2{position:relative;padding-bottom:11px}
+.sec-head h2::after{content:"";position:absolute;left:0;bottom:0;width:52px;height:3px;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--cyan))}
+/* product cards */
+.card{transition:transform .2s,box-shadow .2s,border-color .2s}
+.card:hover{transform:translateY(-5px);border-color:rgba(59,157,255,.75);box-shadow:0 22px 44px rgba(2,8,20,.55),0 0 0 1px rgba(59,157,255,.25)}
+.picframe img{transition:transform .35s ease}
+.card:hover .picframe img,.logochip:hover .logoimg img{transform:scale(1.05)}
+.disc{background:linear-gradient(135deg,#ffb02e,#f5820b);color:#231300;box-shadow:0 6px 16px rgba(245,150,40,.45)}
+.card-body .price b{letter-spacing:-.01em}
+/* brand strip */
+.logochip{transition:transform .2s,box-shadow .2s,border-color .2s}
+.logochip:hover{transform:translateY(-4px);border-color:rgba(59,157,255,.75);box-shadow:0 16px 32px rgba(2,8,20,.5)}
+.logochip .logoimg{overflow:hidden}
+.logochip .logoimg img{transition:transform .35s ease}
+/* chips */
+.chip{transition:background .15s,border-color .15s,transform .15s}
+.chip:hover{border-color:var(--blue2);transform:translateY(-1px)}
+/* featured deal */
+.featured{position:relative;overflow:hidden;box-shadow:0 24px 60px rgba(2,8,20,.5)}
+.featured::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(56,214,245,.75),transparent);z-index:2}
+/* reviews */
+.review{transition:transform .2s,box-shadow .2s,border-color .2s}
+.review:hover{transform:translateY(-4px);border-color:rgba(59,157,255,.6);box-shadow:0 18px 36px rgba(2,8,20,.45)}
+.review .stars{text-shadow:0 0 12px rgba(59,157,255,.45)}
+.rating-box{box-shadow:0 12px 28px rgba(2,8,20,.35)}
+/* faq + help */
+.faq summary{transition:background .15s}
+.faq summary:hover{background:rgba(31,123,255,.07)}
+.help{box-shadow:0 18px 40px rgba(2,8,20,.4)}
+/* drawers + modals */
+.drawer{box-shadow:-24px 0 60px rgba(0,0,0,.5)}
+.modal-card{box-shadow:0 -18px 60px rgba(0,0,0,.55)}
+.plan{transition:border-color .15s,background .15s}
+.plan:hover{border-color:var(--blue2)}
+.paym{transition:border-color .15s,background .15s}
+.field input,.field select{transition:border-color .15s,box-shadow .15s}
+.field input:focus,.field select:focus{box-shadow:0 0 0 3px rgba(31,123,255,.22)}
+/* footer top hairline */
+footer{position:relative}
+footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(56,214,245,.55),transparent)}
+/* whatsapp float pulse */
+.wa-float{animation:wapulse 2.6s ease-out infinite}
+@keyframes wapulse{0%{box-shadow:0 12px 30px rgba(37,211,102,.4),0 0 0 0 rgba(37,211,102,.45)}70%{box-shadow:0 12px 30px rgba(37,211,102,.4),0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 12px 30px rgba(37,211,102,.4),0 0 0 0 rgba(37,211,102,0)}}
+@media (prefers-reduced-motion:reduce){.wa-float,.phone{animation:none}.card,.logochip,.review,.hbadge,.btn{transition:none}}
+@media(max-width:760px){.hstat{min-width:calc(50% - 5px);flex:1}}
 </style>
 </head>
 <body>
@@ -321,6 +395,12 @@ body.light .foot a{color:#2c4160}
         <div class="hero-cta">
           <a class="btn btn-blue" href="#shop">Shop now →</a>
           <button class="btn btn-ghost" id="heroWa">💬 WhatsApp-এ জিজ্ঞেস করুন</button>
+        </div>
+        <div class="hero-stats">
+          <div class="hstat"><b>1,200+</b><span>Verified orders delivered</span></div>
+          <div class="hstat"><b>4.9 ★</b><span>Average buyer rating</span></div>
+          <div class="hstat"><b>30 min</b><span>Average delivery time</span></div>
+          <div class="hstat"><b>24/7</b><span>WhatsApp support</span></div>
         </div>
       </div>
       <div class="phone-stage" aria-hidden="true">
