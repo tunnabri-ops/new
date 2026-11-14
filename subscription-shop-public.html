@@ -45,6 +45,8 @@ header{position:sticky;top:10px;z-index:60}
 .searchbox input::placeholder{color:#8ba3c9}
 body.light .searchbox input::placeholder{color:#687f9f}
 .iconbtn{position:relative;width:42px;height:42px;border-radius:50%;border:1px solid #2f4a7d;background:#0d1a33;color:#fff;display:grid;place-items:center;font-size:17px;flex:none}
+.iconbtn.admin-entry{width:auto;border-radius:999px;padding:0 15px;display:flex;align-items:center;gap:6px;font-size:14px}
+.iconbtn.admin-entry .admin-entry-txt{font-size:13.5px;font-weight:800;letter-spacing:.02em}
 .cart-count{position:absolute;top:-4px;right:-4px;background:var(--blue);color:#fff;font-size:11px;font-weight:800;min-width:20px;height:20px;border-radius:999px;display:grid;place-items:center;padding:0 5px}
 /* hero — full-width banner, same layout as reference */
 .hero{margin-top:14px;background:radial-gradient(1000px 520px at 82% 8%,rgba(31,123,255,.55),transparent 60%),radial-gradient(760px 420px at 6% 96%,rgba(56,214,245,.16),transparent 60%),linear-gradient(120deg,#04070f,#081a3d 55%,#050b18);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}
@@ -548,7 +550,7 @@ try{ if(window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").
       <label class="searchbox">🔍<input id="searchInput" type="search" placeholder="Search products" aria-label="Search products"></label>
       <button class="iconbtn" id="themeBtn" title="Dark / light mode" aria-label="Toggle dark or light mode">☀️</button>
       <button class="iconbtn" id="trackBtn" title="Track order" aria-label="Track order">🚚</button>
-      <button class="iconbtn" id="adminBtn" title="Admin panel" aria-label="Open admin panel">⚙️</button>
+      <button class="iconbtn admin-entry" id="adminBtn" title="Admin panel — অথবা ঠিকানার শেষে #admin লিখুন" aria-label="Open admin panel">⚙️<span class="admin-entry-txt">Admin</span></button>
       <button class="iconbtn" id="cartBtn" aria-label="Open cart">🛒<span class="cart-count hidden" id="cartCount">0</span></button>
     </div>
   </nav>
@@ -703,7 +705,7 @@ try{ if(window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").
       <p>A trusted store for premium subscriptions — streaming, music, storage and VPNs, paid in taka with instant access after payment. Unlock unlimited entertainment with Netflix, Amazon Prime, Spotify, HBO Max, Disney+, Apple TV, and cloud storage or VPNs. Pay easily in Bangladeshi taka (bKash, Nagad, Rocket) and enjoy instant, hassle-free access right after payment. 100% secure and reliable service.</p>
     </div>
     <div><h4>CATEGORIES</h4><a href="#shop" data-navcat="streaming">Streaming &amp; OTT Platforms</a><a href="#shop" data-navcat="vpn">Vpn</a><a href="#shop" data-navcat="music">Music &amp; Audio</a><a href="#shop" data-navcat="storage">Storage</a></div>
-    <div><h4>INFORMATION</h4><a href="#shop">All Products</a><a href="#top">About Us</a><a href="#shop">Request a Product</a><a href="#top">Refund Policy</a></div>
+    <div><h4>INFORMATION</h4><a href="#shop">All Products</a><a href="#top">About Us</a><a href="#shop">Request a Product</a><a href="#top">Refund Policy</a><a href="#admin">🔐 Admin Panel</a></div>
     <div><h4>CONTACT</h4><a href="#" id="footWa">💬 WhatsApp +8801410065538 — Support 24/7 ↗</a><a href="mailto:support@example.com">✉ support@example.com</a><p style="margin-top:8px">Delivery: Within 15 Minutes<br>Warranty: Full Plan Duration<br>100% Trusted &amp; Fast Service!</p></div>
   </div>
   <div class="paystrip"><span class="lbl">Pay with</span>
@@ -791,7 +793,7 @@ try{ if(window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").
   <div style="display:flex;justify-content:space-between;align-items:flex-start">
     <div>
       <h3>🔐 Admin login</h3>
-      <p class="sub">অ্যাডমিন প্যানেল খুলতে পাসওয়ার্ড দিন।</p>
+      <p class="sub">অ্যাডমিন প্যানেল খুলতে পাসওয়ার্ড দিন। সরাসরি ঠিকানা: সাইটের লিংকের শেষে <b>#admin</b> যোগ করুন (যেমন <b>yoursite.com/#admin</b>) — শুধু /admin লিখলে চলবে না।</p>
     </div>
     <button class="xbtn" data-close>✕</button>
   </div>
@@ -1087,6 +1089,11 @@ function updateCart(){
 function closeAll(){
   document.querySelectorAll(".modal").forEach(function(m){m.classList.remove("open")});
   $("cartDrawer").classList.remove("open"); $("overlay").classList.remove("open");
+  /* অ্যাডমিন লগইন মডাল বন্ধ হলে ঠিকানা থেকে #admin সরিয়ে দিন,
+     যাতে একই লিংক আবার চাপলে লগইন আবার খোলে */
+  if(/#\/?admin$/i.test(location.hash || "")){
+    try{ history.replaceState(null, "", location.pathname + location.search); }catch(e){}
+  }
 }
 /* events */
 document.addEventListener("click", function(e){
@@ -1207,14 +1214,43 @@ var adminAuthed   = false;   // লগইন হয়েছে কিনা
 var sessionOrders = [];      // এই সেশনে আসা অর্ডার
 
 /* ---------- ১) লগইন ---------- */
-$("adminBtn").addEventListener("click", function(){
+function openAdminGate(){
   if(adminAuthed){ openAdmin(); return; }
   $("adminLoginError").textContent = "";
   $("adminPass").value = "";
   $("adminLoginModal").classList.add("open");
   $("overlay").classList.add("open");
+  setAdminHash();
   setTimeout(function(){ $("adminPass").focus(); }, 60);
-});
+}
+$("adminBtn").addEventListener("click", openAdminGate);
+
+/* ---------- ঠিকানা (রাউট): #admin ----------
+   এই সাইট একটাই index.html ফাইল, কোনো সার্ভার নেই — তাই ঠিকানার
+   শেষে /admin লিখলে হোস্টিং সার্ভার আলাদা একটা পেজ খুঁজে 404 দেয়,
+   শপের ফাইলটাই লোড হয় না। তার বদলে #admin ব্যবহার হয়: ঠিকানার
+   হ্যাশ অংশ সার্ভারে যায় না, এই ফাইলটাই লোড হয়ে লগইন খুলে দেয়।
+   যেকোনো হোস্টিংয়ে (GitHub Pages, Vercel, নিজের ডোমেইন) কাজ করে:
+   yoursite.com/#admin — এছাড়া ?admin=1 আর পাথের শেষে /admin
+   (হোস্ট ওই ঠিকানায় এই ফাইলটাই দিলে) দুটোই ধরা হয়। */
+function isAdminRoute(){
+  var h = (location.hash || "").replace(/^#\/?/, "").toLowerCase();
+  if(h === "admin"){ return true; }
+  if(/[?&]admin(=1|=true)?(&|$)/.test(location.search || "")){ return true; }
+  if(/\/admin\/?$/.test(location.pathname || "")){ return true; }
+  return false;
+}
+function setAdminHash(){
+  if(/#\/?admin$/i.test(location.hash || "")){ return; }
+  try{ history.replaceState(null, "", location.pathname + location.search + "#admin"); }catch(e){}
+}
+function clearAdminHash(){
+  if(!/#\/?admin$/i.test(location.hash || "")){ return; }
+  try{ history.replaceState(null, "", location.pathname + location.search); }catch(e){}
+}
+function checkAdminRoute(){ if(isAdminRoute()){ openAdminGate(); } }
+window.addEventListener("hashchange", checkAdminRoute);
+checkAdminRoute();
 
 function tryAdminLogin(){
   var typed = $("adminPass").value;
@@ -1240,10 +1276,12 @@ function openAdmin(){
   renderAdminAll();
   $("adminPanel").classList.add("open");
   document.body.style.overflow = "hidden";
+  setAdminHash();
 }
 function closeAdmin(){
   $("adminPanel").classList.remove("open");
   document.body.style.overflow = "";
+  clearAdminHash();
 }
 $("adminViewShop").addEventListener("click", closeAdmin);
 $("adminLogout").addEventListener("click", function(){
