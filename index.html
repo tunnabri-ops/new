@@ -419,6 +419,118 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;b
 @keyframes wapulse{0%{box-shadow:0 12px 30px rgba(37,211,102,.4),0 0 0 0 rgba(37,211,102,.45)}70%{box-shadow:0 12px 30px rgba(37,211,102,.4),0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 12px 30px rgba(37,211,102,.4),0 0 0 0 rgba(37,211,102,0)}}
 @media (prefers-reduced-motion:reduce){.wa-float,.phone{animation:none}.card,.logochip,.review,.hbadge,.btn,.paylogo{transition:none}.paylogo:hover{transform:none}}
 @media(max-width:760px){.hstat{min-width:calc(50% - 5px);flex:1}}
+
+/* ==========================================================================
+   ADMIN PANEL — লগইন, ড্যাশবোর্ড, প্রোডাক্ট, অর্ডার, সেটিংস ও সোর্স কোড
+   ========================================================================== */
+
+/* --- প্যানেলের খোল (full-screen overlay) --- */
+.admin-panel{
+  position:fixed; inset:0; z-index:110;
+  background:var(--bg); color:var(--text);
+  display:none; flex-direction:column;
+}
+.admin-panel.open{ display:flex; }
+
+/* --- উপরের বার --- */
+.admin-top{
+  display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+  padding:14px 18px;
+  background:var(--bg2); border-bottom:1px solid var(--line);
+}
+.admin-top h2{ margin:0; font-size:20px; font-weight:900; letter-spacing:-.01em; }
+.admin-top .admin-sub{ color:var(--muted); font-size:13px; }
+.admin-top .spacer{ margin-left:auto; display:flex; gap:8px; flex-wrap:wrap; }
+
+/* --- ট্যাব --- */
+.admin-tabs{
+  display:flex; gap:8px; flex-wrap:wrap;
+  padding:12px 18px 0;
+}
+.admin-tab{
+  border:1px solid var(--line); background:var(--card2); color:var(--text);
+  border-radius:999px; padding:9px 18px;
+  font-weight:800; font-size:14px;
+}
+.admin-tab.on{ background:var(--blue); border-color:var(--blue); color:#fff; }
+
+/* --- মূল অংশ --- */
+.admin-body{ flex:1; overflow:auto; padding:18px; }
+.admin-view{ display:none; max-width:1060px; margin:0 auto; }
+.admin-view.on{ display:block; }
+.admin-note{ color:var(--muted); font-size:13.5px; line-height:1.6; margin:0 0 14px; }
+
+/* --- ড্যাশবোর্ডের হিসাব কার্ড --- */
+.admin-stats{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:20px;
+}
+.admin-stat{
+  background:var(--card2); border:1px solid var(--line); border-radius:16px; padding:18px;
+}
+.admin-stat b{ display:block; font-size:28px; font-weight:900; line-height:1.1; }
+.admin-stat span{ color:var(--muted); font-size:13px; }
+
+/* --- টেবিল (প্রোডাক্ট ও অর্ডার) --- */
+.admin-table-wrap{
+  background:var(--card2); border:1px solid var(--line);
+  border-radius:16px; overflow:hidden;
+}
+.admin-table{ width:100%; border-collapse:collapse; font-size:14px; }
+.admin-table th{
+  text-align:left; padding:12px 14px;
+  color:var(--muted); font-size:12px; letter-spacing:.08em;
+  border-bottom:1px solid var(--line); background:var(--card);
+}
+.admin-table td{ padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:middle; }
+.admin-table tr:last-child td{ border-bottom:0; }
+.admin-table .num{ text-align:right; font-variant-numeric:tabular-nums; }
+.admin-table th.num{ text-align:right; }
+
+/* --- প্রোডাক্ট সারির ছোট ইনপুট --- */
+.admin-table input[type="number"]{
+  width:96px; background:var(--bg2); border:1px solid var(--line); border-radius:9px;
+  color:var(--text); padding:8px 10px; font-size:14px; outline:0;
+}
+.admin-table input[type="number"]:focus{ border-color:var(--blue); }
+
+/* --- ছোট বাটন --- */
+.btn-sm{
+  border:1px solid var(--line); background:var(--card); color:var(--text);
+  border-radius:9px; padding:8px 13px; font-weight:800; font-size:13px; min-height:36px;
+}
+.btn-sm.blue{ background:var(--blue); border-color:var(--blue); color:#fff; }
+.btn-sm.danger{ color:var(--red); border-color:rgba(255,77,94,.45); }
+
+/* --- অর্ডারের অবস্থা ব্যাজ --- */
+.status-badge{
+  display:inline-block; border-radius:999px; padding:4px 11px;
+  font-size:12px; font-weight:800;
+}
+.status-badge.pending{ background:rgba(245,184,61,.16); color:var(--amber); }
+.status-badge.delivered{ background:rgba(34,197,94,.16); color:var(--green); }
+
+/* --- সেটিংস ও যোগ-করার ফর্ম --- */
+.admin-form{
+  background:var(--card2); border:1px solid var(--line); border-radius:16px;
+  padding:20px; display:grid; gap:14px; max-width:560px; margin-bottom:20px;
+}
+.admin-form h3{ margin:0; font-size:17px; }
+.admin-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:4px; }
+
+/* --- লগইন ভুল পাসওয়ার্ডের বার্তা --- */
+.login-error{ color:var(--red); font-size:13.5px; font-weight:700; margin:10px 0 0; min-height:18px; }
+
+/* --- মোবাইল: স্ট্যাট ২ কলাম, টেবিল কার্ড আকারে --- */
+@media(max-width:760px){
+  .admin-stats{ grid-template-columns:1fr 1fr; }
+  .admin-body{ padding:14px; }
+  .admin-table thead{ display:none; }
+  .admin-table, .admin-table tbody, .admin-table tr, .admin-table td{ display:block; width:100%; }
+  .admin-table tr{ padding:10px 4px; border-bottom:1px solid var(--line); }
+  .admin-table tr:last-child{ border-bottom:0; }
+  .admin-table td{ border-bottom:0; padding:6px 14px; }
+  .admin-table .num{ text-align:left; }
+}
 </style>
 </head>
 <body>
@@ -436,6 +548,7 @@ try{ if(window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").
       <label class="searchbox">🔍<input id="searchInput" type="search" placeholder="Search products" aria-label="Search products"></label>
       <button class="iconbtn" id="themeBtn" title="Dark / light mode" aria-label="Toggle dark or light mode">☀️</button>
       <button class="iconbtn" id="trackBtn" title="Track order" aria-label="Track order">🚚</button>
+      <button class="iconbtn" id="adminBtn" title="Admin panel" aria-label="Open admin panel">⚙️</button>
       <button class="iconbtn" id="cartBtn" aria-label="Open cart">🛒<span class="cart-count hidden" id="cartCount">0</span></button>
     </div>
   </nav>
@@ -671,6 +784,133 @@ try{ if(window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").
   <button class="btn btn-wa wfull" id="trackGo">💬 Ask status on WhatsApp</button>
 </div></div>
 
+<!-- ============================================================
+     ADMIN — লগইন মডাল
+     ============================================================ -->
+<div class="modal" id="adminLoginModal"><div class="modal-card">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start">
+    <div>
+      <h3>🔐 Admin login</h3>
+      <p class="sub">অ্যাডমিন প্যানেল খুলতে পাসওয়ার্ড দিন।</p>
+    </div>
+    <button class="xbtn" data-close>✕</button>
+  </div>
+  <div class="field">
+    <label>Password</label>
+    <input id="adminPass" type="password" inputmode="numeric" autocomplete="off" placeholder="•••••">
+  </div>
+  <p class="login-error" id="adminLoginError"></p>
+  <button class="btn btn-blue wfull" id="adminLoginGo" style="margin-top:12px">Login →</button>
+</div></div>
+
+<!-- ============================================================
+     ADMIN — মূল প্যানেল (ড্যাশবোর্ড / প্রোডাক্ট / অর্ডার / সেটিংস / সোর্স কোড)
+     ============================================================ -->
+<div class="admin-panel" id="adminPanel" role="dialog" aria-label="Admin panel">
+
+  <!-- উপরের বার -->
+  <div class="admin-top">
+    <h2>⚙️ Admin Panel</h2>
+    <span class="admin-sub" id="adminShopName">Nahid OTT</span>
+    <span class="spacer">
+      <button class="btn-sm" id="adminViewShop">🏪 View shop</button>
+      <button class="btn-sm danger" id="adminLogout">Logout</button>
+    </span>
+  </div>
+
+  <!-- ট্যাব -->
+  <div class="admin-tabs">
+    <button class="admin-tab on" data-atab="dash">📊 Dashboard</button>
+    <button class="admin-tab" data-atab="products">📦 Products</button>
+    <button class="admin-tab" data-atab="orders">🧾 Orders</button>
+    <button class="admin-tab" data-atab="settings">🛠️ Settings</button>
+    <button class="admin-tab" data-atab="source">&lt;/&gt; Source code</button>
+  </div>
+
+  <div class="admin-body">
+
+    <!-- ড্যাশবোর্ড -->
+    <section class="admin-view on" id="aview-dash">
+      <div class="admin-stats">
+        <div class="admin-stat"><b id="statProducts">0</b><span>মোট প্রোডাক্ট</span></div>
+        <div class="admin-stat"><b id="statOrders">0</b><span>এই সেশনের অর্ডার</span></div>
+        <div class="admin-stat"><b id="statRevenue">Tk 0</b><span>এই সেশনের বিক্রি</span></div>
+        <div class="admin-stat"><b id="statPending">0</b><span>ডেলিভারি বাকি</span></div>
+      </div>
+      <p class="admin-note">সাম্প্রতিক অর্ডার (এই পেজ খোলা থাকা অবস্থায় আসা):</p>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead><tr><th>অর্ডার</th><th>কাস্টমার</th><th class="num">মোট</th><th>অবস্থা</th></tr></thead>
+          <tbody id="dashOrders"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- প্রোডাক্ট -->
+    <section class="admin-view" id="aview-products">
+      <p class="admin-note">দাম বদলে <b>Save</b> চাপলেই শপে নতুন দাম দেখাবে। 1 Month-এর দাম বদলালে 6 Months ও 1 Year-এর দাম অনুপাতে নিজে থেকে ঠিক হয়ে যাবে।</p>
+      <div class="admin-table-wrap" style="margin-bottom:20px">
+        <table class="admin-table">
+          <thead><tr><th>প্রোডাক্ট</th><th>ক্যাটাগরি</th><th class="num">দাম (Tk)</th><th class="num">আগের দাম (Tk)</th><th></th></tr></thead>
+          <tbody id="adminProductRows"></tbody>
+        </table>
+      </div>
+      <form class="admin-form" id="adminAddForm">
+        <h3>➕ নতুন প্রোডাক্ট যোগ করুন</h3>
+        <div class="field"><label>প্রোডাক্টের নাম *</label><input id="npName" placeholder="যেমন: YouTube Premium"></div>
+        <div class="field"><label>ক্যাটাগরি</label>
+          <select id="npCat">
+            <option value="streaming">Streaming &amp; OTT Platforms</option>
+            <option value="music">Music &amp; Audio</option>
+            <option value="storage">Storage</option>
+            <option value="vpn">Vpn</option>
+          </select>
+        </div>
+        <div class="field"><label>দাম — 1 Month (Tk) *</label><input id="npPrice" type="number" min="1" placeholder="299"></div>
+        <div class="field"><label>আগের দাম (Tk)</label><input id="npOld" type="number" min="0" placeholder="499"></div>
+        <div class="field"><label>বর্ণনা</label><input id="npDesc" placeholder="এক লাইনে প্রোডাক্টের বর্ণনা"></div>
+        <div class="admin-actions"><button class="btn btn-blue" type="submit">যোগ করুন</button></div>
+      </form>
+    </section>
+
+    <!-- অর্ডার -->
+    <section class="admin-view" id="aview-orders">
+      <p class="admin-note">এই পেজ খোলা থাকা অবস্থায় চেকআউট থেকে আসা অর্ডারগুলো এখানে জমা হয়। ডেলিভারি শেষ হলে <b>Mark delivered</b> চাপুন।</p>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead><tr><th>অর্ডার</th><th>আইটেম</th><th>পেমেন্ট</th><th class="num">মোট</th><th>অবস্থা</th><th></th></tr></thead>
+          <tbody id="adminOrderRows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- সেটিংস -->
+    <section class="admin-view" id="aview-settings">
+      <form class="admin-form" id="adminSettingsForm">
+        <h3>দোকানের সেটিংস</h3>
+        <div class="field"><label>দোকানের নাম</label><input id="setShopName"></div>
+        <div class="field"><label>WhatsApp নম্বর (দেশের কোডসহ)</label><input id="setWhatsapp" inputmode="tel" placeholder="8801XXXXXXXXX"></div>
+        <div class="field"><label>bKash / Nagad / Rocket নম্বর</label><input id="setPayNumber" inputmode="tel" placeholder="+8801XXXXXXXXX"></div>
+        <div class="admin-actions"><button class="btn btn-blue" type="submit">Save settings</button></div>
+        <p class="admin-note" style="margin:0">বদলগুলো এই ট্যাব খোলা থাকা পর্যন্তই থাকবে — স্থায়ী করতে সোর্স কোড ট্যাব থেকে ফাইল ডাউনলোড করে CONFIG-এ নম্বর বসিয়ে আবার আপলোড করুন।</p>
+      </form>
+    </section>
+
+    <!-- সোর্স কোড -->
+    <section class="admin-view" id="aview-source">
+      <div class="admin-form" style="max-width:640px">
+        <h3>সোর্স কোড ডাউনলোড</h3>
+        <p class="admin-note" style="margin:0">এই শপের পুরো সোর্স কোড — HTML, CSS আর JavaScript — একটাই <b>index.html</b> ফাইলে, পরিষ্কার সেকশনে সাজানো। ফাইলটা ডাউনলোড করে যেকোনো হোস্টিংয়ে (GitHub Pages, Vercel, নিজের সার্ভার) আপলোড করলেই শপ চলবে।</p>
+        <div class="admin-actions">
+          <button class="btn btn-blue" type="button" id="dlSource">⬇ Download index.html</button>
+          <button class="btn btn-ghost" type="button" id="copySource">Copy source code</button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -891,6 +1131,15 @@ $("placeOrder").addEventListener("click", function(){
   $("orderSummary").textContent = lastOrderText;
   $("coForm").classList.add("hidden"); $("coDone").classList.remove("hidden");
   var link = waLink(lastOrderText); if(link){ window.open(link, "_blank"); }
+  /* এই অর্ডারটা অ্যাডমিন প্যানেলের অর্ডার তালিকায় জমা রাখা */
+  sessionOrders.unshift({
+    id: "ORD-" + (1001 + sessionOrders.length),
+    items: lines.join("\n"), total: total,
+    name: name, phone: phone,
+    method: payMethod, sender: sender, trx: trx,
+    time: new Date().toLocaleTimeString("en-GB", {hour: "2-digit", minute: "2-digit"}),
+    status: "Pending"
+  });
   cart = []; updateCart();
 });
 $("copyOrder").addEventListener("click", function(){
@@ -922,6 +1171,252 @@ $("trackGo").addEventListener("click", function(){
   var t = $("trackTrx").value.trim(); if(!t){ toast("আগে আপনার TrxID লিখুন"); return; }
   openWa("আমার অর্ডারের আপডেট জানতে চাই। TrxID: " + t.toUpperCase());
 });
+/* ==========================================================================
+   ADMIN PANEL
+   --------------------------------------------------------------------------
+   ১) লগইন      — হেডারের ⚙️ বাটন → পাসওয়ার্ড যাচাই → প্যানেল খোলে
+   ২) ড্যাশবোর্ড — প্রোডাক্ট সংখ্যা, এই সেশনের অর্ডার ও বিক্রির হিসাব
+   ৩) প্রোডাক্ট  — দাম বদলানো, নতুন প্রোডাক্ট যোগ, প্রোডাক্ট মোছা
+   ৪) অর্ডার     — এই সেশনে আসা অর্ডারের তালিকা ও ডেলিভারি অবস্থা
+   ৫) সেটিংস     — দোকানের নাম, WhatsApp ও পেমেন্ট নম্বর
+   ৬) সোর্স কোড  — পুরো index.html ফাইল ডাউনলোড / কপি
+
+   নোট: এটি একটি স্ট্যাটিক পেজ — সার্ভার বা ডাটাবেস নেই। তাই প্যানেলের
+   সব বদল শুধু এই পেজ খোলা থাকা পর্যন্তই থাকে; পেজ রিলোড হলে আগের
+   অবস্থায় ফিরে যায়। স্থায়ী বদলের জন্য সোর্স কোডে হাতে এডিট করে
+   ফাইলটি আবার আপলোড করতে হয়।
+   ========================================================================== */
+
+/* --- কনফিগ: অ্যাডমিন পাসওয়ার্ডের SHA-256 হ্যাশ ---
+   আসল পাসওয়ার্ড সোর্সে লেখা নেই — লগইনের সময় টাইপ করা পাসওয়ার্ডের
+   হ্যাশ বানিয়ে এই হ্যাশের সঙ্গে মেলানো হয়। */
+var ADMIN_PASS_HASH = "ee102bc61079be38c1e2957df949852fc63c237ca6acc71d46c3fba56a57ee3e";
+
+/* লেখা → SHA-256 হ্যাশ (hex) */
+function sha256Hex(text){
+  var data = new TextEncoder().encode(text);
+  return crypto.subtle.digest("SHA-256", data).then(function(buf){
+    return Array.prototype.map.call(new Uint8Array(buf), function(b){
+      return ("0" + b.toString(16)).slice(-2);
+    }).join("");
+  });
+}
+
+/* --- অবস্থা (শুধু এই সেশনের জন্য, মেমরিতে থাকে) --- */
+var adminAuthed   = false;   // লগইন হয়েছে কিনা
+var sessionOrders = [];      // এই সেশনে আসা অর্ডার
+
+/* ---------- ১) লগইন ---------- */
+$("adminBtn").addEventListener("click", function(){
+  if(adminAuthed){ openAdmin(); return; }
+  $("adminLoginError").textContent = "";
+  $("adminPass").value = "";
+  $("adminLoginModal").classList.add("open");
+  $("overlay").classList.add("open");
+  setTimeout(function(){ $("adminPass").focus(); }, 60);
+});
+
+function tryAdminLogin(){
+  var typed = $("adminPass").value;
+  if(!typed){ $("adminLoginError").textContent = "আগে পাসওয়ার্ড লিখুন।"; return; }
+  sha256Hex(typed).then(function(hash){
+    if(hash === ADMIN_PASS_HASH){
+      adminAuthed = true;
+      closeAll();
+      openAdmin();
+      toast("স্বাগতম, Admin ✓");
+    } else {
+      $("adminLoginError").textContent = "ভুল পাসওয়ার্ড — আবার চেষ্টা করুন।";
+      $("adminPass").value = "";
+      $("adminPass").focus();
+    }
+  });
+}
+$("adminLoginGo").addEventListener("click", tryAdminLogin);
+$("adminPass").addEventListener("keydown", function(e){ if(e.key === "Enter"){ tryAdminLogin(); } });
+
+/* ---------- প্যানেল খোলা / বন্ধ ---------- */
+function openAdmin(){
+  renderAdminAll();
+  $("adminPanel").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+function closeAdmin(){
+  $("adminPanel").classList.remove("open");
+  document.body.style.overflow = "";
+}
+$("adminViewShop").addEventListener("click", closeAdmin);
+$("adminLogout").addEventListener("click", function(){
+  adminAuthed = false;
+  closeAdmin();
+  toast("লগআউট হয়েছে");
+});
+
+/* ---------- ট্যাব বদলানো ---------- */
+document.querySelectorAll("[data-atab]").forEach(function(btn){
+  btn.addEventListener("click", function(){
+    document.querySelectorAll("[data-atab]").forEach(function(b){ b.classList.toggle("on", b === btn); });
+    document.querySelectorAll(".admin-view").forEach(function(v){ v.classList.remove("on"); });
+    $("aview-" + btn.getAttribute("data-atab")).classList.add("on");
+    renderAdminAll();
+  });
+});
+
+/* ---------- সব ভিউ একসাথে রেন্ডার ---------- */
+function renderAdminAll(){
+  renderAdminDash();
+  renderAdminProducts();
+  renderAdminOrders();
+  /* সেটিংস ফর্মে বর্তমান মান বসানো */
+  $("adminShopName").textContent = CONFIG.shopName;
+  $("setShopName").value  = CONFIG.shopName;
+  $("setWhatsapp").value  = CONFIG.whatsapp;
+  $("setPayNumber").value = CONFIG.payNumber;
+}
+
+/* ---------- ২) ড্যাশবোর্ড ---------- */
+function renderAdminDash(){
+  var revenue = sessionOrders.reduce(function(s, o){ return s + o.total; }, 0);
+  var pending = sessionOrders.filter(function(o){ return o.status === "Pending"; }).length;
+  $("statProducts").textContent = PRODUCTS.length;
+  $("statOrders").textContent   = sessionOrders.length;
+  $("statRevenue").textContent  = tk(revenue);
+  $("statPending").textContent  = pending;
+  $("dashOrders").innerHTML = sessionOrders.length
+    ? sessionOrders.slice(0, 5).map(function(o){
+        return "<tr><td><b>" + o.id + "</b><br><small style='color:var(--muted)'>" + o.time + "</small></td>"
+          + "<td>" + o.name + "<br><small style='color:var(--muted)'>" + o.phone + "</small></td>"
+          + "<td class='num'><b>" + tk(o.total) + "</b></td>"
+          + "<td>" + statusBadge(o.status) + "</td></tr>";
+      }).join("")
+    : "<tr><td colspan='4' class='empty'>এখনো কোনো অর্ডার আসেনি।</td></tr>";
+}
+
+function statusBadge(status){
+  return "<span class='status-badge " + (status === "Delivered" ? "delivered" : "pending") + "'>"
+    + (status === "Delivered" ? "✓ Delivered" : "⏳ Pending") + "</span>";
+}
+
+/* ---------- ৩) প্রোডাক্ট ---------- */
+function renderAdminProducts(){
+  $("adminProductRows").innerHTML = PRODUCTS.map(function(p, i){
+    return "<tr>"
+      + "<td><b>" + p.name + "</b></td>"
+      + "<td style='color:var(--muted)'>" + p.cat + "</td>"
+      + "<td class='num'><input type='number' min='1' value='" + p.price + "' id='ap-price-" + i + "' aria-label='Price'></td>"
+      + "<td class='num'><input type='number' min='0' value='" + p.old   + "' id='ap-old-"   + i + "' aria-label='Old price'></td>"
+      + "<td style='white-space:nowrap'>"
+      +   "<button class='btn-sm blue' data-asave='" + i + "'>Save</button> "
+      +   "<button class='btn-sm danger' data-adel='" + i + "'>Delete</button>"
+      + "</td></tr>";
+  }).join("");
+}
+
+/* দাম বদলালে প্ল্যানের দামগুলো অনুপাতে আবার হিসাব হয় (P() ফাংশনের মতো) */
+function applyPrice(p, price, old){
+  p.price = price;
+  p.old   = old;
+  p.plans = [
+    { label: "1 Month",  note: "সবচেয়ে জনপ্রিয়", price: price },
+    { label: "6 Months", note: "ভালো সাশ্রয়",      price: Math.round(price * 5.2) },
+    { label: "1 Year",   note: "সেরা ডিল",          price: Math.round(price * 9.5) }
+  ];
+}
+
+/* প্রোডাক্ট টেবিলের Save / Delete বাটন */
+document.addEventListener("click", function(e){
+  var sv = e.target.closest("[data-asave]");
+  if(sv){
+    var i = parseInt(sv.getAttribute("data-asave"), 10);
+    var price = parseInt($("ap-price-" + i).value, 10);
+    var old   = parseInt($("ap-old-"   + i).value, 10);
+    if(!price || price < 1){ toast("সঠিক দাম দিন"); return; }
+    applyPrice(PRODUCTS[i], price, old > price ? old : price);
+    render();
+    toast("দাম আপডেট হয়েছে — " + PRODUCTS[i].name + " এখন " + tk(price));
+    return;
+  }
+  var del = e.target.closest("[data-adel]");
+  if(del){
+    var j = parseInt(del.getAttribute("data-adel"), 10);
+    var removed = PRODUCTS.splice(j, 1)[0];
+    POPULAR_IDS = POPULAR_IDS.filter(function(id){ return id !== removed.id; });
+    cart = cart.filter(function(c){ return c.name !== removed.name; });
+    updateCart(); render(); renderAdminProducts(); renderAdminDash();
+    toast("মুছে ফেলা হয়েছে — " + removed.name);
+  }
+});
+
+/* নতুন প্রোডাক্ট যোগ */
+$("adminAddForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  var name  = $("npName").value.trim();
+  var price = parseInt($("npPrice").value, 10);
+  if(!name || !price || price < 1){ toast("নাম ও সঠিক দাম দিন"); return; }
+  var old = parseInt($("npOld").value, 10) || Math.round(price * 1.5);
+  var id  = "p-" + Date.now().toString(36);
+  PRODUCTS.push(P(id, name, $("npCat").value, price, old,
+    "#1f7bff", name.charAt(0).toUpperCase(),
+    $("npDesc").value.trim() || "প্রিমিয়াম সাবস্ক্রিপশন — ডেলিভারি ১৫ মিনিটের মধ্যে।", false, ""));
+  render(); renderAdminProducts(); renderAdminDash();
+  e.target.reset();
+  toast("নতুন প্রোডাক্ট যোগ হয়েছে — " + name);
+});
+
+/* ---------- ৪) অর্ডার ---------- */
+function renderAdminOrders(){
+  $("adminOrderRows").innerHTML = sessionOrders.length
+    ? sessionOrders.map(function(o, i){
+        return "<tr>"
+          + "<td><b>" + o.id + "</b><br><small style='color:var(--muted)'>" + o.time + " · " + o.name + " · " + o.phone + "</small></td>"
+          + "<td style='white-space:pre-line;font-size:13px'>" + o.items.replace(/• /g, "") + "</td>"
+          + "<td>" + o.method + "<br><small style='color:var(--muted)'>From " + o.sender + "<br>TrxID: " + o.trx + "</small></td>"
+          + "<td class='num'><b>" + tk(o.total) + "</b></td>"
+          + "<td>" + statusBadge(o.status) + "</td>"
+          + "<td>" + (o.status === "Pending"
+              ? "<button class='btn-sm blue' data-deliver='" + i + "'>Mark delivered</button>"
+              : "<button class='btn-sm' data-deliver='" + i + "'>Mark pending</button>")
+            + "</td></tr>";
+      }).join("")
+    : "<tr><td colspan='6' class='empty'>এখনো কোনো অর্ডার আসেনি। শপ থেকে চেকআউট করলেই এখানে দেখা যাবে।</td></tr>";
+}
+
+/* ডেলিভারি অবস্থা বদলানো */
+document.addEventListener("click", function(e){
+  var d = e.target.closest("[data-deliver]");
+  if(!d) return;
+  var o = sessionOrders[parseInt(d.getAttribute("data-deliver"), 10)];
+  if(!o) return;
+  o.status = (o.status === "Pending") ? "Delivered" : "Pending";
+  renderAdminOrders(); renderAdminDash();
+  toast(o.id + " → " + o.status);
+});
+
+/* ---------- ৫) সেটিংস ---------- */
+$("adminSettingsForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  CONFIG.shopName  = $("setShopName").value.trim()  || CONFIG.shopName;
+  CONFIG.whatsapp  = $("setWhatsapp").value.replace(/\D/g, "");
+  CONFIG.payNumber = $("setPayNumber").value.trim();
+  $("adminShopName").textContent = CONFIG.shopName;
+  updatePayNote();
+  toast("সেটিংস সেভ হয়েছে ✓");
+});
+
+/* ---------- ৬) সোর্স কোড ডাউনলোড / কপি ---------- */
+function sourceCodeText(){
+  return "<!doctype html>\n" + document.documentElement.outerHTML;
+}
+$("dlSource").addEventListener("click", function(){
+  download("index.html", sourceCodeText(), "text/html");
+  toast("index.html ডাউনলোড হচ্ছে ⬇");
+});
+$("copySource").addEventListener("click", function(){
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(sourceCodeText()).then(function(){ toast("সোর্স কোড কপি হয়েছে ✓"); });
+  }
+});
+
 render(); renderReviews(); updateCart();
 </script>
 </body>
