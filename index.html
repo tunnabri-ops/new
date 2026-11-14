@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-<meta name="color-scheme" content="dark"/>
+<meta name="color-scheme" content="light dark"/>
 <link rel="icon" href="data:,"/>
 <title>Subscription Shop — Premium Subscriptions in Bangladesh</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,7 @@ button,[role="button"],select,input,summary{min-height:40px}
 img{max-width:100%}
 .wrap{max-width:1180px;margin:0 auto;padding:0 18px}
 /* ticker */
-.ticker{background:#0b1530;border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap}
+.ticker{background:#0b1530;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap}
 .ticker-track{display:inline-flex;gap:48px;padding:9px 0;font-size:12.5px;font-weight:700;color:var(--muted);animation:tick 30s linear infinite}
 .ticker b{color:#fff}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -39,48 +39,69 @@ header{position:sticky;top:10px;z-index:60}
 .nav-right{margin-left:auto;display:flex;align-items:center;gap:8px}
 .searchbox{display:flex;align-items:center;gap:6px;background:#0a1428;border:1px solid var(--line);border-radius:999px;padding:0 12px}
 .searchbox input{background:none;border:0;outline:0;color:#fff;width:110px;font-size:13.5px;min-height:38px}
-.iconbtn{position:relative;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#0a1428;color:#fff;display:grid;place-items:center;font-size:17px}
+.iconbtn{position:relative;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#0a1428;color:#fff;display:grid;place-items:center;font-size:17px;flex:none}
 .cart-count{position:absolute;top:-4px;right:-4px;background:var(--blue);color:#fff;font-size:11px;font-weight:800;min-width:20px;height:20px;border-radius:999px;display:grid;place-items:center;padding:0 5px}
-/* hero */
-.hero{margin-top:14px;background:radial-gradient(900px 480px at 78% 20%,rgba(31,123,255,.5),transparent 60%),radial-gradient(700px 400px at 10% 90%,rgba(56,214,245,.18),transparent 60%),linear-gradient(120deg,#050a16,#0a1c3f 55%,#071227);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.hero-in{max-width:1180px;margin:0 auto;padding:52px 18px 34px;display:grid;grid-template-columns:1.25fr .75fr;gap:34px;align-items:center}
-.hero h1{font-size:clamp(38px,6vw,64px);line-height:1.02;margin:10px 0 12px;font-weight:900;letter-spacing:-.02em}
+/* hero — full-width banner, same layout as reference */
+.hero{margin-top:14px;background:radial-gradient(1000px 520px at 82% 8%,rgba(31,123,255,.55),transparent 60%),radial-gradient(760px 420px at 6% 96%,rgba(56,214,245,.16),transparent 60%),linear-gradient(120deg,#04070f,#081a3d 55%,#050b18);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}
+.hero-in{max-width:1180px;margin:0 auto;padding:44px 18px 26px}
+.hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:34px;align-items:center}
+.hero-brand{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+.hero-brand .logo-mark{width:58px;height:58px;border-radius:16px;font-size:24px}
+.hero-brand .bn{font-size:clamp(19px,2.6vw,27px);font-weight:900;letter-spacing:.14em;line-height:1.15}
+.hero-brand .bn small{display:block;font-size:11px;letter-spacing:.42em;color:var(--muted);font-weight:700;margin-top:3px}
+.hero h1{font-size:clamp(40px,6.4vw,72px);line-height:1.0;margin:0 0 10px;font-weight:900;letter-spacing:-.02em}
 .hero h1 .grad{color:var(--cyan)}
-.hero p{color:#c3d4f2;font-size:16.5px;line-height:1.65;max-width:540px;margin:0 0 22px}
-.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero .tagline{font-size:clamp(14px,2vw,20px);letter-spacing:.52em;font-weight:700;color:#dbe7ff;margin:0 0 28px}
+.hero-badges{display:flex;gap:14px;flex-wrap:wrap}
+.hbadge{display:flex;align-items:center;gap:13px;border:1px solid rgba(90,160,255,.45);background:rgba(13,28,58,.72);border-radius:16px;padding:15px 20px;box-shadow:0 0 24px rgba(31,123,255,.25),inset 0 0 18px rgba(31,123,255,.12)}
+.hbadge .ic{font-size:30px;line-height:1}
+.hbadge b{display:block;font-size:19px;line-height:1.15}
+.hbadge span{font-size:12.5px;color:var(--muted)}
 .btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;padding:12px 22px;font-weight:800;font-size:15px;min-height:48px}
 .btn-blue{background:var(--blue);color:#fff;box-shadow:0 10px 26px rgba(31,123,255,.4)}
 .btn-ghost{background:rgba(255,255,255,.06);color:#fff;border:1px solid var(--line)}
 .btn-wa{background:var(--wa);color:#06280f}
 .btn-green{background:var(--green);color:#04170a}
-.trustrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
-.trust{border:1px solid rgba(90,160,255,.4);background:rgba(16,32,64,.7);border-radius:14px;padding:12px 16px;font-size:13.5px}
-.trust b{display:block;font-size:15px}
-.payrow{margin-top:18px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.payrow span.lbl{font-weight:900;font-size:15px;margin-right:4px}
-.paychip{background:#fff;color:#111;border-radius:9px;padding:7px 12px;font-weight:900;font-size:13px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+/* pay-with strip */
+.paybar{margin-top:34px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;border:1px solid rgba(90,160,255,.4);background:rgba(10,22,46,.65);border-radius:18px;padding:14px 18px;box-shadow:0 0 30px rgba(31,123,255,.18)}
+.paybar .lbl{font-weight:900;font-size:19px;padding-right:14px;border-right:1px solid rgba(120,170,255,.35)}
+.paychip{background:#fff;color:#111;border-radius:9px;padding:8px 13px;font-weight:900;font-size:13.5px;display:inline-flex;align-items:center;gap:5px}
 .paychip.bkash{color:#e2136e}.paychip.nagad{color:#ee4023}.paychip.rocket{color:#8c3494}
-/* phone mock */
-.phone{width:250px;margin:0 auto;background:#0b0f16;border:3px solid #2a3448;border-radius:38px;padding:14px 13px;box-shadow:0 30px 70px rgba(0,0,0,.55),0 0 0 8px rgba(31,123,255,.08);transform:rotate(1.5deg)}
+.paychip.visa{color:#1a1f71;font-style:italic;letter-spacing:.04em}
+.paychip.amex{background:#2e77bc;color:#fff}
+.paychip.upay{color:#00a651}.paychip.ok{color:#f6921e}
+.mc{display:inline-flex}.mc i{width:15px;height:15px;border-radius:50%;display:block}.mc i:first-child{background:#eb001b}.mc i:last-child{background:#f79e1b;margin-left:-6px;opacity:.92}
+/* phone mock on pedestal */
+.phone-stage{position:relative;padding-bottom:26px}
+.phone{width:252px;margin:0 auto;background:#0b0f16;border:3px solid #2a3448;border-radius:38px;padding:14px 13px;box-shadow:0 30px 70px rgba(0,0,0,.55),0 0 0 8px rgba(31,123,255,.08);transform:rotate(1.5deg);position:relative;z-index:2;color:#f2f6ff}
 .phone .notch{width:90px;height:20px;background:#000;border-radius:999px;margin:0 auto 12px}
 .phone h4{margin:2px 0 2px;font-size:14px}.phone .mid{font-size:10px;color:#8fa3c4}
 .ptabs{display:flex;gap:5px;margin:12px 0}.ptabs span{flex:1;text-align:center;font-size:9.5px;font-weight:800;padding:7px 2px;border-radius:7px;background:#16233c;color:#9db0d0}.ptabs span.on{background:#0f5132;color:#fff}
 .pfield{background:#131c2e;border:1px solid #263350;border-radius:9px;padding:9px 10px;font-size:11px;color:#7e93b8;margin-bottom:7px}
 .ppay{background:#0f5132;color:#fff;text-align:center;border-radius:9px;padding:11px;font-weight:800;font-size:12.5px;margin-top:4px}
 .phone .secure{text-align:center;font-size:9.5px;color:#7e93b8;margin-top:9px}
+.pedestal{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:290px;height:44px;border-radius:50%;background:radial-gradient(closest-side,rgba(56,150,255,.5),rgba(31,123,255,.16) 55%,transparent 72%);z-index:1}
+.pedestal::after{content:"";position:absolute;left:50%;top:8px;transform:translateX(-50%);width:230px;height:22px;border-radius:50%;background:#0a1830;border:1.5px solid rgba(56,214,245,.65);box-shadow:0 0 22px rgba(56,150,255,.8),inset 0 0 12px rgba(31,123,255,.5)}
 /* sections */
 section{padding:46px 0 6px}
 .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:20px}
 .sec-head h2{font-size:clamp(24px,3.4vw,32px);margin:0;font-weight:900;letter-spacing:-.01em}
 .sec-head a{color:var(--blue2);font-weight:800;font-size:14px;white-space:nowrap;padding:8px 4px}
+.offer-head{display:flex;gap:15px;align-items:stretch;margin-bottom:26px}
+.offer-head .bar{width:5px;background:var(--blue);border-radius:99px;flex:none;box-shadow:0 0 14px rgba(31,123,255,.7)}
+.offer-head h2{font-size:clamp(27px,4vw,38px);margin:0;font-weight:900}
+.offer-head p{margin:5px 0 0;color:var(--muted);font-size:15px}
 /* product cards */
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .card{background:var(--card2);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;text-align:left;padding:0;color:var(--text);width:100%;transition:border-color .15s,transform .15s}
 .card:hover{border-color:var(--blue)}
-.tile{height:172px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:radial-gradient(320px 170px at 50% 115%,rgba(56,150,255,.4),transparent 65%),linear-gradient(180deg,#0a1526,#060b16)}
-.tile .brand{font-size:25px;font-weight:900;letter-spacing:.01em;text-align:center;padding:0 10px;line-height:1.12}
-.tile .cube{width:64px;height:64px;border-radius:16px;display:grid;place-items:center;font-size:27px;font-weight:900;color:#fff;border:1.5px solid rgba(255,255,255,.4);background:rgba(255,255,255,.07);box-shadow:0 14px 30px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.35)}
-.disc{position:absolute;top:10px;right:10px;background:var(--blue);color:#fff;font-size:11.5px;font-weight:800;border-radius:7px;padding:4px 8px}
+.tile{height:252px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:radial-gradient(360px 190px at 50% 118%,rgba(56,150,255,.42),transparent 65%),radial-gradient(220px 130px at 4% 16%,rgba(31,123,255,.28),transparent 60%),radial-gradient(220px 130px at 96% 16%,rgba(31,123,255,.28),transparent 60%),linear-gradient(180deg,#0a1526,#060b16)}
+.tile .brand{font-size:27px;font-weight:900;letter-spacing:.01em;text-align:center;padding:0 10px;line-height:1.12;text-shadow:0 4px 22px rgba(0,0,0,.6)}
+.cube-wrap{display:flex;flex-direction:column;align-items:center}
+.tile .cube{width:66px;height:66px;border-radius:16px;display:grid;place-items:center;font-size:28px;font-weight:900;color:#fff;border:1.5px solid rgba(255,255,255,.4);background:rgba(255,255,255,.07);box-shadow:0 14px 30px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.35);position:relative;z-index:2}
+.ped{width:118px;height:15px;border-radius:50%;background:radial-gradient(closest-side,#12294d 30%,#0a1830 62%,transparent 75%);border-bottom:2px solid rgba(56,150,255,.55);margin-top:-4px;box-shadow:0 10px 22px rgba(0,0,0,.55)}
+.disc{position:absolute;top:10px;right:10px;background:var(--blue);color:#fff;font-size:11.5px;font-weight:800;border-radius:7px;padding:4px 8px;z-index:3}
 .card-body{padding:14px 15px 16px}
 .card-body h3{margin:0 0 10px;font-size:16.5px}
 .price{color:var(--muted);font-size:12.5px}
@@ -88,7 +109,7 @@ section{padding:46px 0 6px}
 .price s{color:var(--muted2)}
 /* featured */
 .featured{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center;background:radial-gradient(600px 300px at 8% 50%,rgba(31,123,255,.22),transparent 60%);border:1px solid var(--line);border-radius:22px;padding:22px}
-.featured .tile{height:300px;border-radius:16px}
+.featured .tile{height:320px;border-radius:16px}
 .pill{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(90,160,255,.45);color:#8fc2ff;border-radius:999px;padding:7px 13px;font-size:11px;font-weight:800;letter-spacing:.14em}
 .featured h3{font-size:clamp(26px,3.6vw,38px);margin:14px 0 8px;line-height:1.12}
 .featured p{color:var(--muted);line-height:1.6;margin:0 0 12px}
@@ -100,14 +121,10 @@ section{padding:46px 0 6px}
 .chips{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:20px}
 .chip{border:1px solid var(--line);background:var(--card2);color:#dbe7ff;border-radius:999px;padding:9px 17px;font-weight:700;font-size:13.5px}
 .chip.on{background:var(--blue);border-color:var(--blue);color:#fff}
-/* steps */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.step{background:var(--card2);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
-.step .n{width:42px;height:42px;border-radius:12px;background:rgba(31,123,255,.16);color:var(--blue2);display:grid;place-items:center;font-weight:900;font-size:18px;margin-bottom:12px}
-.step h3{margin:0 0 7px;font-size:17px}.step p{margin:0;color:var(--muted);line-height:1.6;font-size:14.5px}
 /* reviews */
-.rating-box{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:14px;padding:10px 18px}
-.rating-box .num{font-size:30px;font-weight:900}
+.rating-box{display:flex;align-items:center;gap:13px;border:1px solid var(--line);border-radius:14px;padding:10px 18px}
+.rating-box .num{font-size:32px;font-weight:900}
+.rating-box small{color:var(--muted);display:block;margin-top:1px}
 .stars{color:var(--blue2);letter-spacing:2px;font-size:14px}
 .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .review{background:var(--card2);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
@@ -115,15 +132,16 @@ section{padding:46px 0 6px}
 .verified{font-size:10px;font-weight:800;letter-spacing:.08em;color:#7db4ff;border:1px solid rgba(90,160,255,.4);border-radius:999px;padding:4px 9px}
 .review p{color:#dbe6fa;line-height:1.65;font-size:14.5px;min-height:96px}
 .who{display:flex;gap:11px;align-items:center;border-top:1px solid var(--line);padding-top:13px}
-.avatar{width:40px;height:40px;border-radius:50%;background:#14305e;color:#7db4ff;display:grid;place-items:center;font-weight:800;font-size:13px}
+.avatar{width:40px;height:40px;border-radius:50%;background:#14305e;color:#7db4ff;display:grid;place-items:center;font-weight:800;font-size:13px;flex:none}
 .who b{display:block;font-size:14px}.who span{color:var(--muted);font-size:12.5px}
 .review .prod{display:flex;justify-content:space-between;color:var(--muted);font-size:12.5px;margin-top:11px}
-/* faq */
-.faq{max-width:760px;margin:0 auto}
-.faq details{background:var(--card2);border:1px solid var(--line);border-radius:14px;margin-bottom:10px}
-.faq summary{padding:17px 20px;font-weight:800;font-size:16px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px}
+/* faq — single divided container, like reference */
+.faq{max-width:760px;margin:0 auto;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card2)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:last-child{border-bottom:0}
+.faq summary{padding:19px 22px;font-weight:800;font-size:16.5px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px}
 .faq summary::-webkit-details-marker{display:none}
-.faq details p{margin:0;padding:0 20px 18px;color:var(--muted);line-height:1.65;font-size:14.5px}
+.faq details p{margin:0;padding:0 22px 19px;color:var(--muted);line-height:1.65;font-size:14.5px}
 /* github */
 .gh{background:linear-gradient(120deg,#0c1830,#0a1224);border:1px solid var(--line);border-radius:22px;padding:28px;display:grid;grid-template-columns:1.1fr .9fr;gap:26px}
 .gh h3{margin:0 0 9px;font-size:24px}.gh p{color:var(--muted);line-height:1.65;margin:0 0 16px;font-size:14.5px}
@@ -138,6 +156,9 @@ footer{margin-top:44px;border-top:1px solid var(--line);background:var(--bg2)}
 .foot h4{font-size:12px;letter-spacing:.16em;color:var(--muted);margin:0 0 14px}
 .foot a{display:block;color:#c9d9f5;font-size:14px;padding:5px 0}
 .foot p{color:var(--muted);line-height:1.65;font-size:14px;max-width:300px}
+.paystrip{background:#fff;border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:4px}
+.paystrip .lbl{color:#0a7a42;font-weight:900;font-size:14px;margin-right:4px}
+.paystrip .paychip{border:1px solid #e3e8f2;padding:6px 10px;font-size:12.5px}
 .footbar{border-top:1px solid var(--line);padding:16px 0 22px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--muted2);font-size:13px}
 /* settings */
 .settings{background:var(--card2);border:1px dashed #2c4470;border-radius:16px;padding:20px;margin-top:26px}
@@ -149,19 +170,23 @@ footer{margin-top:44px;border-top:1px solid var(--line);background:var(--bg2)}
 /* float WA */
 .wa-float{position:fixed;right:18px;bottom:18px;z-index:70;width:56px;height:56px;border-radius:50%;background:var(--wa);display:grid;place-items:center;font-size:26px;box-shadow:0 12px 30px rgba(37,211,102,.4);border:0}
 /* recent order toast */
-.recent{position:fixed;left:16px;bottom:16px;z-index:65;background:#0e1930;border:1px solid var(--line);border-radius:14px;padding:13px 16px;max-width:300px;box-shadow:0 18px 40px rgba(0,0,0,.5);display:none}
-.recent.show{display:block}
+.recent{position:fixed;left:16px;bottom:16px;z-index:65;background:#0e1930;border:1px solid var(--line);border-radius:14px;padding:12px 14px;max-width:320px;box-shadow:0 18px 40px rgba(0,0,0,.5);display:none;gap:11px;align-items:flex-start}
+.recent.show{display:flex}
+.recent .ric{width:38px;height:38px;border-radius:50%;background:rgba(31,123,255,.18);display:grid;place-items:center;font-size:17px;flex:none}
 .recent small{color:var(--blue2);font-weight:800;letter-spacing:.1em;font-size:10.5px}
-.recent p{margin:4px 0 0;font-size:13.5px;color:#dbe7ff}
+.recent p{margin:3px 0 0;font-size:13.5px;color:#dbe7ff;line-height:1.45}
+.recent .rx{background:none;border:0;color:var(--muted);font-size:14px;min-height:28px;padding:0 2px;flex:none}
 /* drawers & modals */
 .overlay{position:fixed;inset:0;background:rgba(3,6,12,.72);z-index:80;display:none}
 .overlay.open{display:block}
-.drawer{position:fixed;top:0;right:0;height:100dvh;width:min(420px,94vw);background:#0c1628;border-left:1px solid var(--line);z-index:90;transform:translateX(105%);transition:transform .25s;display:flex;flex-direction:column}
-.drawer.open{transform:none}
+.drawer{position:fixed;top:0;right:0;height:100dvh;width:min(420px,94vw);background:#0c1628;border-left:1px solid var(--line);z-index:90;display:none;flex-direction:column}
+.drawer.open{display:flex;animation:slidein .25s ease}
+@keyframes slidein{from{transform:translateX(46px);opacity:.4}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.drawer.open{animation:none}}
 .drawer header{position:static}
 .drawer-head{display:flex;justify-content:space-between;align-items:center;padding:18px;border-bottom:1px solid var(--line)}
 .drawer-head h3{margin:0;font-size:18px}
-.xbtn{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:#0a1428;color:#fff;font-size:16px}
+.xbtn{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:#0a1428;color:#fff;font-size:16px;flex:none}
 .drawer-body{flex:1;overflow:auto;padding:16px 18px}
 .cart-item{display:flex;gap:12px;border:1px solid var(--line);border-radius:13px;padding:12px;margin-bottom:10px}
 .cart-item .cube-sm{width:46px;height:46px;border-radius:11px;display:grid;place-items:center;font-weight:900;color:#fff;flex:none}
@@ -196,85 +221,135 @@ footer{margin-top:44px;border-top:1px solid var(--line);background:var(--bg2)}
 .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,80px);background:#12233f;border:1px solid var(--blue);color:#fff;padding:12px 20px;border-radius:999px;font-weight:700;font-size:14px;z-index:120;transition:transform .25s;max-width:92vw;text-align:center}
 .toast.show{transform:translate(-50%,0)}
 .hidden{display:none!important}
+/* light theme (header sun toggle) */
+body.light{--bg:#e9eff9;--bg2:#dde7f6;--card:#ffffff;--card2:#ffffff;--line:#c7d5ee;--text:#0b1526;--muted:#43597c;--muted2:#687f9f}
+body.light .nav{background:rgba(255,255,255,.93)}
+body.light .nav-links a{color:#22334f}
+body.light .nav-links a:hover{background:#e3ecfb}
+body.light .searchbox,body.light .iconbtn{background:#fff;color:#0b1526}
+body.light .searchbox input{color:#0b1526}
+body.light .hero{background:radial-gradient(1000px 520px at 82% 8%,rgba(31,123,255,.35),transparent 60%),linear-gradient(120deg,#cfe2ff,#eaf2ff 55%,#d9e8ff)}
+body.light .hero .tagline{color:#22334f}
+body.light .hbadge{background:rgba(255,255,255,.75)}
+body.light .btn-ghost{background:rgba(255,255,255,.65);color:#0b1526}
+body.light .ticker{background:#d3e1f7}
+body.light .ticker b{color:#0b1526}
+body.light .paybar{background:rgba(255,255,255,.6)}
+body.light .paybar .lbl{border-right-color:rgba(31,90,180,.3)}
+body.light .price b{color:#0b1526}
+body.light .feat-list div{color:#22334f}
+body.light .review p{color:#22334f}
+body.light .chip{background:#fff;color:#22334f}
+body.light .chip.on{background:var(--blue);color:#fff}
+body.light .drawer,body.light .modal-card{background:#f3f7ff}
+body.light .field input,body.light .field select,body.light .plan,body.light .paym{background:#fff;color:#0b1526}
+body.light .xbtn{background:#fff;color:#0b1526}
+body.light .order-done pre{background:#fff;color:#22334f}
+body.light .recent{background:#fff}
+body.light .recent p{color:#22334f}
+body.light .gh{background:linear-gradient(120deg,#ffffff,#e8f0fd)}
+body.light .gh ol{color:#22334f}
+body.light .gh code{background:#eef3fc}
+body.light .foot a{color:#2c4160}
 /* responsive */
 @media(max-width:1020px){.grid{grid-template-columns:repeat(3,1fr)}.reviews{grid-template-columns:1fr 1fr}.foot{grid-template-columns:1fr 1fr}}
 @media(max-width:760px){
-  .nav-links{display:none}.searchbox input{width:70px}
-  .hero-in{grid-template-columns:1fr;padding-top:36px}.phone{display:none}
-  .grid{grid-template-columns:repeat(2,1fr);gap:11px}.tile{height:138px}.tile .brand{font-size:19px}.tile .cube{width:50px;height:50px;font-size:21px}
-  .featured{grid-template-columns:1fr;padding:16px}.featured .tile{height:210px}
-  .steps{grid-template-columns:1fr}.reviews{grid-template-columns:1fr}
+  .nav-links{display:none}.searchbox input{width:52px}
+  .nav{gap:6px;padding:6px 8px}
+  .logo{padding:4px 2px}.logo-txt{display:none}
+  .iconbtn{width:38px;height:38px;font-size:15px}
+  .iconbtn.hide-sm{display:none}
+  .hero-grid{grid-template-columns:1fr}.phone-stage{display:none}
+  .hero .tagline{letter-spacing:.3em}
+  .grid{grid-template-columns:repeat(2,1fr);gap:11px}.tile{height:196px}.tile .brand{font-size:20px}.tile .cube{width:52px;height:52px;font-size:22px}.ped{width:92px}
+  .featured{grid-template-columns:1fr;padding:16px}.featured .tile{height:230px}
+  .reviews{grid-template-columns:1fr}
   .gh{grid-template-columns:1fr;padding:22px}.set-grid{grid-template-columns:1fr}
   .foot{grid-template-columns:1fr 1fr}.recent{display:none!important}
+  .paybar .lbl{border-right:0;padding-right:0}
 }
 @media(max-width:420px){.grid{grid-template-columns:1fr 1fr}.card-body h3{font-size:14.5px}.price b{font-size:17px}}
 </style>
 </head>
 <body>
 
-<div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
-
 <header><div class="wrap" style="padding:0 8px">
   <nav class="nav">
-    <a class="logo" href="#top"><span class="logo-mark">S</span><span>SUBSCRIPTION<small>SHOP · BD</small></span></a>
+    <a class="logo" href="#top"><span class="logo-mark">S</span><span class="logo-txt">SUBSCRIPTION<small>SHOP · BD</small></span></a>
     <div class="nav-links">
-      <a href="#shop">All Products</a><a href="#shop" data-navcat="streaming">Streaming &amp; OTT</a>
-      <a href="#shop" data-navcat="ai">AI &amp; Creative Tools</a><a href="#shop" data-navcat="vpn">VPN</a>
+      <a href="#shop">All Products</a><a href="#shop" data-navcat="streaming">Streaming &amp; OTT Platforms</a>
+      <a href="#shop" data-navcat="ai">Ai &amp; Creative Tools</a><a href="#shop" data-navcat="vpn">Vpn</a>
     </div>
     <div class="nav-right">
       <label class="searchbox">🔍<input id="searchInput" type="search" placeholder="Search products" aria-label="Search products"></label>
+      <button class="iconbtn hide-sm" id="themeBtn" title="Light / dark theme" aria-label="Toggle theme">☀️</button>
       <button class="iconbtn" id="trackBtn" title="Track order" aria-label="Track order">🚚</button>
+      <button class="iconbtn hide-sm" id="accountBtn" title="Shop owner settings" aria-label="Shop owner settings">👤</button>
       <button class="iconbtn" id="cartBtn" aria-label="Open cart">🛒<span class="cart-count hidden" id="cartCount">0</span></button>
     </div>
   </nav>
 </div></header>
 
 <main id="top">
-  <!-- HERO -->
+  <!-- HERO BANNER -->
   <div class="hero"><div class="hero-in">
-    <div>
-      <span class="pill">● PREMIUM SUBSCRIPTIONS · BANGLADESH</span>
-      <h1>All your premium apps,<br><span class="grad">one simple shop.</span></h1>
-      <p>Netflix, ChatGPT Plus, Spotify, Canva, YouTube Premium, VPN আর আরও অনেক কিছু — bKash / Nagad / Rocket-এ পেমেন্ট, ৩০ মিনিটের মধ্যে ডেলিভারি, পুরো প্ল্যানজুড়ে ওয়ারেন্টি।</p>
-      <div class="hero-cta">
-        <a class="btn btn-blue" href="#shop">Shop now →</a>
-        <button class="btn btn-ghost" id="heroWa">💬 WhatsApp-এ জিজ্ঞেস করুন</button>
+    <div class="hero-grid">
+      <div>
+        <div class="hero-brand">
+          <span class="logo-mark">S</span>
+          <span class="bn">SUBSCRIPTION SHOP<small>PREMIUM ACCESS · BANGLADESH</small></span>
+        </div>
+        <h1>Premium <span class="grad">Verified</span></h1>
+        <p class="tagline">SIMPLE • SECURE • INSTANT</p>
+        <div class="hero-badges">
+          <div class="hbadge"><span class="ic">🛡️</span><span><b>Secure Payment</b><span>bKash · Nagad · Rocket · Card</span></span></div>
+          <div class="hbadge"><span class="ic">⚡</span><span><b>Instant Delivery</b><span>Within 30 minutes of payment</span></span></div>
+        </div>
+        <div class="hero-cta">
+          <a class="btn btn-blue" href="#shop">Shop now →</a>
+          <button class="btn btn-ghost" id="heroWa">💬 WhatsApp-এ জিজ্ঞেস করুন</button>
+        </div>
       </div>
-      <div class="trustrow">
-        <div class="trust">⚡ <b>Instant Delivery</b>Within 30 minutes</div>
-        <div class="trust">🛡️ <b>Full Warranty</b>Whole plan duration</div>
-        <div class="trust">🎧 <b>24/7 Support</b>WhatsApp anytime</div>
-      </div>
-      <div class="payrow"><span class="lbl">Pay With</span>
-        <span class="paychip bkash">bKash</span><span class="paychip nagad">নগদ</span><span class="paychip rocket">Rocket</span>
+      <div class="phone-stage" aria-hidden="true">
+        <div class="phone">
+          <div class="notch"></div>
+          <h4>Subscription Shop BD</h4><div class="mid">Secure checkout · Pay in Taka</div>
+          <div class="ptabs"><span class="on">MFS WALLET</span><span>CARD</span><span>BANK</span></div>
+          <div class="pfield">bKash / Nagad number</div>
+          <div class="pfield">Transaction ID (TrxID)</div>
+          <div class="pfield">Your WhatsApp number</div>
+          <div class="ppay">🔒 PAY BDT 320.00</div>
+          <div class="secure">✓ Payment verified by our team before delivery</div>
+        </div>
+        <div class="pedestal"></div>
       </div>
     </div>
-    <div class="phone" aria-hidden="true">
-      <div class="notch"></div>
-      <h4>Subscription Shop BD</h4><div class="mid">Secure checkout · Pay in Taka</div>
-      <div class="ptabs"><span class="on">MFS WALLET</span><span>CARD</span><span>BANK</span></div>
-      <div class="pfield">bKash / Nagad number</div>
-      <div class="pfield">Transaction ID (TrxID)</div>
-      <div class="pfield">Your WhatsApp number</div>
-      <div class="ppay">🔒 PAY BDT 320.00</div>
-      <div class="secure">✓ Payment verified by our team before delivery</div>
+    <div class="paybar"><span class="lbl">Pay With</span>
+      <span class="paychip visa">VISA</span>
+      <span class="paychip"><span class="mc"><i></i><i></i></span>Mastercard</span>
+      <span class="paychip amex">AMERICAN EXPRESS</span>
+      <span class="paychip bkash">bKash</span><span class="paychip nagad">নগদ</span><span class="paychip rocket">Rocket</span>
+      <span class="paychip upay">Upay</span><span class="paychip ok">OK Wallet</span>
     </div>
   </div></div>
 
+  <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
+
   <div class="wrap">
-    <!-- MOST POPULAR -->
-    <section id="popular">
+    <!-- SPECIAL OFFERS -->
+    <section id="special">
+      <div class="offer-head"><span class="bar"></span><div><h2>Special Offers</h2><p>Hand-picked deals at the lowest price</p></div></div>
       <div class="sec-head"><h2>Most Popular</h2><a href="#shop">All products →</a></div>
       <div class="grid" id="popularGrid"></div>
     </section>
 
-    <!-- FEATURED -->
-    <section>
+    <!-- FEATURED DEAL -->
+    <section style="padding-top:26px">
       <div class="featured">
         <div class="tile" style="background:radial-gradient(400px 220px at 50% 115%,rgba(255,60,80,.35),transparent 65%),radial-gradient(400px 220px at 80% 0%,rgba(56,150,255,.35),transparent 60%),linear-gradient(180deg,#0a1526,#060b16)">
           <span class="disc" style="right:auto;left:14px;top:14px">save 29%</span>
-          <div class="brand" style="font-size:34px"><span style="color:#e50914">NETFLIX</span><br><span style="color:#fff">+</span> <span style="color:#3b9dff">Prime</span> <span style="color:#fff">FREE</span></div>
-          <div style="display:flex;gap:12px"><span class="cube" style="background:#e50914">N</span><span class="cube" style="background:#00a8e1;font-size:15px">prime</span></div>
+          <div class="brand" style="font-size:36px"><span style="color:#e50914">NETFLIX</span><br><span style="color:#fff">+</span> <span style="color:#3b9dff">Prime</span> <span style="color:#fff">FREE</span></div>
+          <div style="display:flex;gap:12px"><span class="cube" style="background:#e50914;width:66px;height:66px;border-radius:16px;display:grid;place-items:center;font-size:28px;font-weight:900;color:#fff">N</span><span class="cube" style="background:#00a8e1;font-size:15px;width:66px;height:66px;border-radius:16px;display:grid;place-items:center;font-weight:900;color:#fff">prime</span></div>
         </div>
         <div>
           <span class="pill">● MOST ORDERED THIS MONTH</span>
@@ -282,8 +357,8 @@ footer{margin-top:44px;border-top:1px solid var(--line);background:var(--bg2)}
           <p>Verified premium subscription, tested before delivery. একটা প্যাকেজেই দুটো প্ল্যাটফর্ম — সিনেমা, সিরিজ, লাইভ স্পোর্টস সব।</p>
           <div class="bigprice">Tk 320 <s>Tk 450</s></div>
           <div class="feat-list">
-            <div><i>●</i>Delivery within 30 minutes</div><div><i>●</i>Full plan warranty</div>
-            <div><i>●</i>bKash · Nagad · Rocket</div><div><i>●</i>24/7 support</div>
+            <div><i>●</i>30 min WhatsApp delivery</div><div><i>●</i>Warranty for full plan</div>
+            <div><i>●</i>bKash · Nagad · Rocket · Card</div><div><i>●</i>24/7 support</div>
           </div>
           <button class="btn btn-blue" data-open-product="netflix-prime">Order now →</button>
         </div>
@@ -298,20 +373,10 @@ footer{margin-top:44px;border-top:1px solid var(--line);background:var(--bg2)}
       <p class="empty hidden" id="noResults">কোনো প্রোডাক্ট পাওয়া যায়নি — অন্য নামে সার্চ করে দেখুন।</p>
     </section>
 
-    <!-- HOW IT WORKS -->
-    <section>
-      <div class="sec-head"><h2>How ordering works</h2></div>
-      <div class="steps">
-        <div class="step"><div class="n">1</div><h3>Pick a plan</h3><p>প্রোডাক্টে ক্লিক করে মেয়াদ বেছে নিন — ১ মাস, ৬ মাস বা ১ বছর। কার্টে যোগ করুন।</p></div>
-        <div class="step"><div class="n">2</div><h3>Pay in Taka</h3><p>bKash / Nagad / Rocket-এ Send Money করে TrxID-টা চেকআউট ফর্মে বসান।</p></div>
-        <div class="step"><div class="n">3</div><h3>Get access in 30 min</h3><p>অর্ডার WhatsApp-এ পাঠালেই যাচাই করে ৩০ মিনিটের মধ্যে অ্যাক্সেস ডেলিভারি পাবেন।</p></div>
-      </div>
-    </section>
-
     <!-- REVIEWS -->
     <section>
-      <div class="sec-head"><div><h2>Thousands of quiet, uneventful deliveries</h2><p style="color:var(--muted);margin:8px 0 0">Buyers wrote back after their access arrived.</p></div>
-        <div class="rating-box"><span class="stars">★★★★★</span><span><small style="color:var(--muted)">What buyers say about delivery &amp; support</small></span></div>
+      <div class="sec-head"><div><h2>Thousands of quiet, uneventful deliveries</h2><p style="color:var(--muted);margin:8px 0 0">No scripts, no paid praise — just what buyers wrote back after their access arrived.</p></div>
+        <div class="rating-box"><span class="num">4.9</span><span><span class="stars">★★★★★</span><small>1,200+ verified orders</small></span></div>
       </div>
       <div class="reviews" id="reviews"></div>
     </section>
@@ -321,11 +386,17 @@ footer{margin-top:44px;border-top:1px solid var(--line);background:var(--bg2)}
       <div class="sec-head" style="justify-content:center"><h2>Frequently Asked Questions</h2></div>
       <div class="faq">
         <details><summary>How do I get delivery after ordering? <span>▾</span></summary><p>চেকআউটের পর অর্ডারটি WhatsApp-এ পাঠান। পেমেন্ট যাচাই হলেই ৩০ মিনিটের মধ্যে আপনার ইমেইল/WhatsApp-এ অ্যাক্সেস ডিটেইলস পৌঁছে যাবে।</p></details>
-        <details><summary>Which payment methods can I use? <span>▾</span></summary><p>bKash, Nagad, Rocket — Send Money করে TrxID দিলেই হবে। </p></details>
+        <details><summary>Which payment methods can I use? <span>▾</span></summary><p>bKash, Nagad, Rocket — Send Money করে TrxID দিলেই হবে। কার্ড পেমেন্টের জন্য WhatsApp-এ যোগাযোগ করুন।</p></details>
         <details><summary>What if my subscription stops working? <span>▾</span></summary><p>প্রতিটা প্ল্যানে পুরো মেয়াদের ওয়ারেন্টি থাকে। সমস্যা হলে WhatsApp-এ জানালেই রিপ্লেসমেন্ট বা সমাধান দেওয়া হয়।</p></details>
         <details><summary>Is this shared or personal account? <span>▾</span></summary><p>প্রোডাক্টের নামে (Share) লেখা থাকলে শেয়ার্ড প্রোফাইল, বাকিগুলো আপনার নিজের ইমেইলে আপগ্রেড/অ্যাক্টিভেশন হয়। কেনার আগে প্রোডাক্ট পেজে বিস্তারিত লেখা থাকে।</p></details>
       </div>
     </section>
+
+    <!-- HELP -->
+    <div class="help">
+      <div><h3>Need help choosing a plan?</h3><p>Message us on WhatsApp — we usually reply within a few minutes.</p></div>
+      <button class="btn btn-wa" id="helpWa">💬 Chat on WhatsApp</button>
+    </div>
 
     <!-- SETTINGS -->
     <div class="settings" id="settings">
@@ -358,12 +429,6 @@ footer{margin-top:44px;border-top:1px solid var(--line);background:var(--bg2)}
         </ol>
       </div>
     </section>
-
-    <!-- HELP -->
-    <div class="help">
-      <div><h3>Need help choosing a plan?</h3><p>Message us on WhatsApp — we usually reply within a few minutes.</p></div>
-      <button class="btn btn-wa" id="helpWa">💬 Chat on WhatsApp</button>
-    </div>
   </div>
 </main>
 
@@ -373,15 +438,27 @@ footer{margin-top:44px;border-top:1px solid var(--line);background:var(--bg2)}
       <a class="logo" href="#top" style="padding:0 0 10px"><span class="logo-mark">S</span><span>SUBSCRIPTION<small>SHOP · BD</small></span></a>
       <p>A trusted store for premium subscriptions — streaming, AI tools and VPNs, paid in taka with instant access after payment.</p>
     </div>
-    <div><h4>CATEGORIES</h4><a href="#shop" data-navcat="streaming">Streaming &amp; OTT</a><a href="#shop" data-navcat="ai">AI &amp; Creative Tools</a><a href="#shop" data-navcat="vpn">VPN</a><a href="#shop" data-navcat="music">Music &amp; Audio</a><a href="#shop" data-navcat="storage">Storage</a><a href="#shop" data-navcat="combos">Combos</a></div>
-    <div><h4>INFORMATION</h4><a href="#shop">All Products</a><a href="#settings">Shop Settings</a><a href="#shop">Request a Product</a><a href="#top">Refund Policy</a></div>
+    <div><h4>CATEGORIES</h4><a href="#shop" data-navcat="streaming">Streaming &amp; OTT Platforms</a><a href="#shop" data-navcat="ai">Ai &amp; Creative Tools</a><a href="#shop" data-navcat="vpn">Vpn</a><a href="#shop" data-navcat="music">Music &amp; Audio</a><a href="#shop" data-navcat="storage">Storage</a><a href="#shop" data-navcat="combos">Combos</a></div>
+    <div><h4>INFORMATION</h4><a href="#shop">All Products</a><a href="#top">About Us</a><a href="#settings">Shop Settings</a><a href="#shop">Request a Product</a><a href="#top">Refund Policy</a></div>
     <div><h4>CONTACT</h4><a href="#" id="footWa">💬 WhatsApp — Support 24/7 ↗</a><a href="mailto:support@example.com">✉ support@example.com</a><p style="margin-top:8px">Delivery: within 30 minutes<br>Warranty: full plan duration</p></div>
   </div>
-  <div class="payrow" style="padding-bottom:6px"><span class="lbl" style="font-size:13px">Pay with</span><span class="paychip bkash">bKash</span><span class="paychip nagad">নগদ</span><span class="paychip rocket">Rocket</span></div>
-  <div class="footbar"><span>© 2026 Subscription Shop BD. All rights reserved.</span><span>Static site · Ready for GitHub Pages</span></div>
+  <div class="paystrip"><span class="lbl">Pay with</span>
+    <span class="paychip visa">VISA</span>
+    <span class="paychip"><span class="mc"><i></i><i></i></span>Mastercard</span>
+    <span class="paychip amex">AMERICAN EXPRESS</span>
+    <span class="paychip bkash">bKash</span><span class="paychip nagad">নগদ</span><span class="paychip rocket">Rocket</span>
+    <span class="paychip upay">Upay</span><span class="paychip ok">OK Wallet</span>
+  </div>
+  <div class="footbar"><span>© 2026 Subscription Shop BD. All rights reserved.</span><span>Premium subscriptions · Paid in Taka</span></div>
 </div></footer>
 
 <button class="wa-float" id="waFloat" aria-label="Chat on WhatsApp">💬</button>
+
+<div class="recent" id="recentToast" role="status">
+  <span class="ric">🛍️</span>
+  <div><small>RECENT ORDER</small><p id="recentText"></p></div>
+  <button class="rx" id="recentClose" aria-label="Dismiss">✕</button>
+</div>
 
 <div class="overlay" id="overlay"></div>
 
@@ -450,7 +527,7 @@ var CONFIG = { whatsapp: "", payNumber: "", shopName: "Subscription Shop BD" };
 
 var CATEGORIES = [
   {id:"all",label:"All products"},{id:"streaming",label:"Streaming & OTT Platforms"},
-  {id:"ai",label:"AI & Creative Tools"},{id:"vpn",label:"VPN"},
+  {id:"ai",label:"Ai & Creative Tools"},{id:"vpn",label:"Vpn"},
   {id:"music",label:"Music & Audio"},{id:"storage",label:"Storage"},{id:"combos",label:"Combos"}
 ];
 function P(id,name,cat,price,old,color,letter,desc,popular){
@@ -462,7 +539,7 @@ function P(id,name,cat,price,old,color,letter,desc,popular){
 var PRODUCTS = [
   P("netflix-prime","NETFLIX + PRIME (Share) FREE","combos",320,450,"#e50914","N","Netflix শেয়ার্ড প্রোফাইল + Prime Video একসাথে ফ্রি। 4K, নিজস্ব PIN-সহ প্রোফাইল।",true),
   P("chatgpt-plus","ChatGPT Plus","ai",299,500,"#10a37f","G","আপনার নিজের ইমেইলে ChatGPT Plus আপগ্রেড। GPT-5, image, file analysis সব আনলক।",true),
-  P("capcut-pro","CapCut Pro","ai",250,500,"#111827","C","CapCut Pro — সব প্রিমিয়াম ইফেক্ট, ট্রানজিশন ও ক্লাউড স্টোরেজ আনলক।",true),
+  P("capcut-pro","CapCut Pro","ai",250,500,"#9aa7bd","C","CapCut Pro — সব প্রিমিয়াম ইফেক্ট, ট্রানজিশন ও ক্লাউড স্টোরেজ আনলক।",true),
   P("spotify","Spotify Premium","music",199,250,"#1db954","S","আপনার নিজের অ্যাকাউন্টে Spotify Premium — ad-free, offline download।",false),
   P("hbo-max","HBO MAX","streaming",250,450,"#7b2ff7","H","HBO Max প্রিমিয়াম — সিনেমা ও সিরিজ 4K HDR-এ।"),
   P("disney","Disney Plus","streaming",299,450,"#1c6dd9","D","Disney+ — Marvel, Star Wars, Pixar সহ পুরো লাইব্রেরি।"),
@@ -481,13 +558,21 @@ var PRODUCTS = [
   P("netflix-solo","Netflix Premium 4K","streaming",350,550,"#e50914","N","Netflix Premium 4K UHD — শেয়ার্ড প্রোফাইল, নিজস্ব PIN।"),
   P("combo-family","Family Combo: Netflix + Spotify + YouTube","combos",499,899,"#f5b83d","F","পুরো পরিবারের প্যাক — Netflix, Spotify ও YouTube Premium একসাথে।",true)
 ];
+var POPULAR_IDS = ["netflix-prime","chatgpt-plus","capcut-pro","combo-family"];
 var REVIEWS = [
-  {t:"Bought it on a Friday evening while the whole family was waiting for a movie. Details landed before the popcorn was ready.",n:"Imran Kabir",c:"Dhaka",p:"Netflix",ini:"IK",d:"1 year user"},
-  {t:"My international card kept failing for months. Paid in taka here instead and the upgrade showed up on my own account. Exactly what I needed.",n:"Shafayet Noor",c:"Chattogram",p:"ChatGPT Plus",ini:"SN",d:"6 months user"},
-  {t:"The screen kicked me out once during a series finale. Messaged them, had a fresh working access before the episode buffered again. No excuses, no waiting.",n:"Sharmin Akhter",c:"Narayanganj",p:"Netflix",ini:"SA",d:"1 year user"},
+  {t:"Bought it on a Friday evening while the whole family was waiting for a movie. Details landed before the popcorn was ready.",n:"Imran Kabir",c:"Banani, Dhaka",p:"Netflix 4K",ini:"IK",d:"3 months user"},
   {t:"I asked maybe fifteen questions before paying. Not once did they sound annoyed. Got the confirmation, logged in, and my old playlists were all still there.",n:"Tahmina Sultana",c:"Feni",p:"Spotify Premium",ini:"TS",d:"1 year user"},
+  {t:"My international card kept failing for months. Paid in taka here instead and the upgrade showed up on my own account. Exactly what I needed.",n:"Shafayet Noor",c:"Chattogram",p:"ChatGPT Plus",ini:"SN",d:"1 month user"},
   {t:"Runs a small print shop with my husband. We design everything ourselves now. Two months in and it hasn't logged us out once.",n:"Rumana Haque",c:"Bogura",p:"Canva Pro",ini:"RH",d:"1 year user"},
-  {t:"Ordered at 2am out of pure boredom, expecting a reply in the morning. Got one in eight minutes. Still slightly confused about who sleeps over there.",n:"Nayeem Chowdhury",c:"Mohammadpur, Dhaka",p:"YouTube Premium",ini:"NC",d:"6 months user"}
+  {t:"Ordered at 2am out of pure boredom, expecting a reply in the morning. Got one in eight minutes. Still slightly confused about who sleeps over there.",n:"Nayeem Chowdhury",c:"Mohammadpur, Dhaka",p:"YouTube Premium",ini:"NC",d:"6 months user"},
+  {t:"The screen kicked me out once during a series finale. Messaged them, had a fresh working access before the episode buffered again. No excuses, no waiting.",n:"Sharmin Akhter",c:"Narayanganj",p:"Prime Video",ini:"SA",d:"3 months user"},
+  {t:"I needed it for remote work calls, not just streaming. The connection has stayed steady for weeks, and the setup guide was short and clear.",n:"Arifuzzaman Khan",c:"Rangpur",p:"VPN",ini:"AK",d:"1 year user"},
+  {t:"Fifth order from this shop, mostly for my siblings now. At this point I just send the payment and go do something else. It always arrives.",n:"Jarin Tasnim",c:"Sylhet",p:"Netflix",ini:"JT",d:"1 year user"}
+];
+var RECENT = [
+  {n:"Asif",p:"HBO MAX",t:"57 min ago"},
+  {n:"Rakibul",p:"HBO MAX",t:"33 min ago"},
+  {n:"Sumon",p:"Capcut Pro",t:"3 hr 23 min ago"}
 ];
 
 var cart = [], activeCat = "all", currentProduct = null, currentPlan = 0, payMethod = "bKash", lastOrderText = "";
@@ -508,12 +593,14 @@ function cardHTML(p){
   return '<button class="card" data-open-product="'+p.id+'">'
     +'<div class="tile"><span class="disc">-'+discPct(p)+'%</span>'
     +'<div class="brand" style="color:'+p.color+'">'+p.name.split("(")[0]+'</div>'
-    +'<span class="cube" style="background:'+p.color+'">'+p.letter+'</span></div>'
+    +'<span class="cube-wrap"><span class="cube" style="background:'+p.color+'">'+p.letter+'</span><span class="ped"></span></span></div>'
     +'<div class="card-body"><h3>'+p.name+'</h3>'
     +'<div class="price">From <b>'+tk(p.price)+'</b> <s>'+tk(p.old)+'</s></div></div></button>';
 }
 function render(){
-  $("popularGrid").innerHTML = PRODUCTS.filter(function(p){return p.popular}).map(cardHTML).join("");
+  $("popularGrid").innerHTML = POPULAR_IDS.map(function(id){
+    return cardHTML(PRODUCTS.filter(function(p){return p.id===id})[0]);
+  }).join("");
   var q = ($("searchInput").value||"").toLowerCase().trim();
   var list = PRODUCTS.filter(function(p){
     return (activeCat==="all"||p.cat===activeCat) && (!q || p.name.toLowerCase().indexOf(q)>-1);
@@ -527,15 +614,29 @@ function render(){
 }
 function renderReviews(){
   $("reviews").innerHTML = REVIEWS.map(function(r){
-    return '<div class="review"><div class="top"><span class="stars">★★★★★</span></div>'
+    return '<div class="review"><div class="top"><span class="stars">★★★★★</span><span class="verified">✓ VERIFIED</span></div>'
       +'<p>“'+r.t+'”</p><div class="who"><span class="avatar">'+r.ini+'</span><span><b>'+r.n+'</b><span>'+r.c+'</span></span></div>'
       +'<div class="prod"><span>'+r.p+'</span><i>'+r.d+'</i></div></div>';
   }).join("");
 }
 /* ticker */
 (function(){
-  var items = "<span><b>Premium Subscriptions in Bangladesh</b></span><span>bKash | Nagad | Rocket | Cards etc.</span><span><b>Instant Delivery Within 30 Minutes</b></span><span>Full Plan Warranty with 24/7 Support</span>";
+  var items = "<span><b>Premium Subscriptions in Bangladesh</b></span><span>Bkash | Nagad | Rocket | Cards etc.</span><span><b>Instant Delivery Within 30 Minutes</b></span><span>Full Plan Warranty with 24/7 Support</span>";
   $("ticker").innerHTML = items + items;
+})();
+/* recent order toast */
+(function(){
+  var idx = 0, dismissed = false, el = $("recentToast");
+  function show(){
+    if(dismissed) return;
+    var r = RECENT[idx % RECENT.length]; idx++;
+    $("recentText").innerHTML = "<b>" + r.n + "</b> purchased <b>" + r.p + "</b> " + r.t;
+    el.classList.add("show");
+    setTimeout(function(){ el.classList.remove("show"); }, 7000);
+  }
+  $("recentClose").addEventListener("click", function(){ dismissed = true; el.classList.remove("show"); });
+  setTimeout(show, 3500);
+  setInterval(show, 16000);
 })();
 /* product modal */
 function openProduct(id){
@@ -639,6 +740,15 @@ $("heroWa").addEventListener("click", genericWa);
 $("helpWa").addEventListener("click", genericWa);
 $("waFloat").addEventListener("click", genericWa);
 $("footWa").addEventListener("click", function(e){ e.preventDefault(); genericWa(); });
+/* header utility buttons */
+$("themeBtn").addEventListener("click", function(){
+  var light = document.body.classList.toggle("light");
+  $("themeBtn").textContent = light ? "🌙" : "☀️";
+});
+$("accountBtn").addEventListener("click", function(){
+  document.getElementById("settings").scrollIntoView({behavior:"smooth"});
+  toast("Shop settings — এখানে নিজের WhatsApp ও পেমেন্ট নম্বর বসান");
+});
 /* track */
 $("trackBtn").addEventListener("click", function(){ $("trackModal").classList.add("open"); $("overlay").classList.add("open"); });
 $("trackGo").addEventListener("click", function(){
