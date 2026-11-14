@@ -155,12 +155,6 @@ section{padding:46px 0 6px}
 .faq summary{padding:19px 22px;font-weight:800;font-size:16.5px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px}
 .faq summary::-webkit-details-marker{display:none}
 .faq details p{margin:0;padding:0 22px 19px;color:var(--muted);line-height:1.65;font-size:14.5px}
-/* github */
-.gh{background:linear-gradient(120deg,#0c1830,#0a1224);border:1px solid var(--line);border-radius:22px;padding:28px;display:grid;grid-template-columns:1.1fr .9fr;gap:26px}
-.gh h3{margin:0 0 9px;font-size:24px}.gh p{color:var(--muted);line-height:1.65;margin:0 0 16px;font-size:14.5px}
-.gh ol{margin:0;padding-left:20px;color:#d5e3fb;line-height:1.9;font-size:14.5px}
-.gh code{background:#0a1428;border:1px solid var(--line);border-radius:6px;padding:1px 7px;font-size:13px;color:#8fc2ff}
-.gh-btns{display:flex;gap:10px;flex-wrap:wrap}
 /* help + footer */
 .help{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;background:var(--card2);border:1px solid var(--line);border-radius:18px;padding:24px 26px;margin-top:44px}
 .help h3{margin:0 0 5px;font-size:21px}.help p{margin:0;color:var(--muted)}
@@ -260,9 +254,6 @@ body.light .xbtn{background:#fff;color:#0b1526}
 body.light .order-done pre{background:#fff;color:#22334f}
 body.light .recent{background:#fff}
 body.light .recent p{color:#22334f}
-body.light .gh{background:linear-gradient(120deg,#ffffff,#e8f0fd)}
-body.light .gh ol{color:#22334f}
-body.light .gh code{background:#eef3fc}
 body.light .foot a{color:#2c4160}
 /* responsive */
 @media(max-width:1020px){.grid{grid-template-columns:repeat(3,1fr)}.reviews{grid-template-columns:1fr 1fr}.foot{grid-template-columns:1fr 1fr}}
@@ -277,7 +268,7 @@ body.light .foot a{color:#2c4160}
   .grid{grid-template-columns:repeat(2,1fr);gap:11px}.tile{height:196px}.tile .brand{font-size:20px}.tile .cube{width:52px;height:52px;font-size:22px}.ped{width:92px}.picframe{width:min(196px,94%)}
   .featured{grid-template-columns:1fr;padding:16px}.featured .tile{height:230px}
   .reviews{grid-template-columns:1fr}
-  .gh{grid-template-columns:1fr;padding:22px}.set-grid{grid-template-columns:1fr}
+  .set-grid{grid-template-columns:1fr}
   .foot{grid-template-columns:1fr 1fr}.recent{display:none!important}
   .paybar .lbl{border-right:0;padding-right:0}
 }
@@ -519,26 +510,6 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;b
       </div>
     </div>
 
-    <!-- GITHUB -->
-    <section>
-      <div class="gh">
-        <div>
-          <h3>🚀 Put this site on GitHub Pages — free</h3>
-          <p>এই পেজটাই পুরো সাইট — একটা মাত্র <code>index.html</code> ফাইল। নিচের বাটনে সোর্স কোড ডাউনলোড করে GitHub-এ আপলোড করলেই লাইভ হয়ে যাবে, কোনো সার্ভার লাগবে না।</p>
-          <div class="gh-btns">
-            <button class="btn btn-green" id="downloadSrc">⬇ Download index.html</button>
-            <a class="btn btn-ghost" href="https://github.com/new" target="_blank" rel="noopener">Create GitHub repo ↗</a>
-          </div>
-        </div>
-        <ol>
-          <li>GitHub-এ নতুন <b>Public</b> repo বানান, যেমন <code>subscription-shop</code></li>
-          <li>ডাউনলোড করা ফাইলটা <code>index.html</code> নামে আপলোড করুন</li>
-          <li>Repo → <b>Settings → Pages</b> → Branch: <code>main</code> → Save</li>
-          <li>১–২ মিনিটে লাইভ লিংক পাবেন: <code>username.github.io/subscription-shop</code></li>
-          <li>নম্বর বদলাতে ফাইলের CONFIG অংশ এডিট করে আবার আপলোড করুন</li>
-        </ol>
-      </div>
-    </section>
   </div>
 </main>
 
@@ -661,25 +632,25 @@ var PRODUCTS = [
 ];
 var POPULAR_IDS = ["gemini-5tb","netflix-solo","disney-hulu","spotify"];
 var REVIEWS = [
-  {t:"My Drive kept showing 'storage full' right in the middle of client work. The 5TB showed up on my own Google account the same evening, and Gemini Pro came with it. Photos backup alone was worth it.",n:"Fahim Rahman",c:"Uttara, Dhaka",p:"Gemini Pro + 5TB Storage",ini:"FR",d:"2 months user"},
-  {t:"Two subscriptions I was paying for separately, now in one package. The kids live on Disney+, I live on Hulu. Setup took one message and about twenty minutes.",n:"Nusrat Jahan",c:"Khulna",p:"Disney+ + Hulu",ini:"NJ",d:"1 month user"},
-  {t:"Mainly took it for Severance and Slow Horses. Picture quality on my TV is properly 4K, no buffering drama. Renewal reminder came before it expired, which I appreciated.",n:"Tanvir Ahmed",c:"Mirpur, Dhaka",p:"Apple TV+",ini:"TA",d:"3 months user"},
-  {t:"আম্মু নাটক দেখতে চায়, আমি লাইভ খেলা। Bongo-তে দুটোই পেয়ে গেছি। আগের ফ্রি অ্যাপে যে বাফারিং হতো, প্রিমিয়ামে সেটা নেই বললেই চলে।",n:"Rahadul Islam",c:"Cumilla",p:"Bongo Premium",ini:"RI",d:"6 months user"},
-  {t:"Shifted my whole family off three separate VPN apps to this one Nord account — ten devices, and my office laptop stopped complaining about blocked sites.",n:"Sabbir Hossain",c:"Gazipur",p:"Nord VPN",ini:"SH",d:"1 year user"},
-  {t:"Took it mainly for House of the Dragon and The Last of Us. Streams in proper 4K on my TV and the account has not dropped once in two months.",n:"Mehedi Hasan",c:"Barishal",p:"HBO MAX",ini:"MH",d:"2 months user"},
-  {t:"চরকির অরিজিনাল সিরিজগুলোর জন্যই নেওয়া। মোবাইলে ডাউনলোড করে বাসে বসে দেখি — অফলাইনে একদম স্মুথ চলে, কোনো ঝামেলা হয়নি এখনো।",n:"Farhana Islam",c:"Dhanmondi, Dhaka",p:"Chorki Premium",ini:"FI",d:"4 months user"},
-  {t:"Bought it on a Friday evening while the whole family was waiting for a movie. Details landed before the popcorn was ready.",n:"Imran Kabir",c:"Banani, Dhaka",p:"Netflix 4K",ini:"IK",d:"3 months user"},
-  {t:"I asked maybe fifteen questions before paying. Not once did they sound annoyed. Got the confirmation, logged in, and my old playlists were all still there.",n:"Tahmina Sultana",c:"Feni",p:"Spotify Premium",ini:"TS",d:"1 year user"},
-  {t:"The screen kicked me out once during a series finale. Messaged them, had a fresh working access before the episode buffered again. No excuses, no waiting.",n:"Sharmin Akhter",c:"Narayanganj",p:"Prime Video",ini:"SA",d:"3 months user"},
-  {t:"Fifth order from this shop, mostly for my siblings now. At this point I just send the payment and go do something else. It always arrives.",n:"Jarin Tasnim",c:"Sylhet",p:"Netflix",ini:"JT",d:"1 year user"}
+  {t:"My Drive kept showing 'storage full' right in the middle of client work. The 5TB showed up on my own Google account the same evening, and Gemini Pro came with it. Photos backup alone was worth it.",n:"Ariful Islam",c:"Uttara, Dhaka",p:"Gemini Pro + 5TB Storage",ini:"AI",d:"Nov 2026"},
+  {t:"Two subscriptions I was paying for separately, now in one package. The kids live on Disney+, I live on Hulu. Setup took one message and about twenty minutes.",n:"Sadia Afrin",c:"Khulna",p:"Disney+ + Hulu",ini:"SA",d:"Nov 2026"},
+  {t:"Mainly took it for Severance and Slow Horses. Picture quality on my TV is properly 4K, no buffering drama. Renewal reminder came before it expired, which I appreciated.",n:"Rifat Hasan",c:"Mirpur, Dhaka",p:"Apple TV+",ini:"RH",d:"Oct 2026"},
+  {t:"আম্মু নাটক দেখতে চায়, আমি লাইভ খেলা। Bongo-তে দুটোই পেয়ে গেছি। আগের ফ্রি অ্যাপে যে বাফারিং হতো, প্রিমিয়ামে সেটা নেই বললেই চলে।",n:"Shakibul Hasan",c:"Cumilla",p:"Bongo Premium",ini:"SH",d:"Oct 2026"},
+  {t:"Shifted my whole family off three separate VPN apps to this one Nord account — ten devices, and my office laptop stopped complaining about blocked sites.",n:"Mahmudul Karim",c:"Gazipur",p:"Nord VPN",ini:"MK",d:"Sep 2026"},
+  {t:"Took it mainly for House of the Dragon and The Last of Us. Streams in proper 4K on my TV and the account has not dropped once in two months.",n:"Nabil Chowdhury",c:"Barishal",p:"HBO MAX",ini:"NC",d:"Nov 2026"},
+  {t:"চরকির অরিজিনাল সিরিজগুলোর জন্যই নেওয়া। মোবাইলে ডাউনলোড করে বাসে বসে দেখি — অফলাইনে একদম স্মুথ চলে, কোনো ঝামেলা হয়নি এখনো।",n:"Tamanna Akter",c:"Dhanmondi, Dhaka",p:"Chorki Premium",ini:"TA",d:"Oct 2026"},
+  {t:"Bought it on a Friday evening while the whole family was waiting for a movie. Details landed before the popcorn was ready.",n:"Rakibul Islam",c:"Banani, Dhaka",p:"Netflix 4K",ini:"RI",d:"Nov 2026"},
+  {t:"I asked maybe fifteen questions before paying. Not once did they sound annoyed. Got the confirmation, logged in, and my old playlists were all still there.",n:"Priya Das",c:"Feni",p:"Spotify Premium",ini:"PD",d:"Sep 2026"},
+  {t:"The screen kicked me out once during a series finale. Messaged them, had a fresh working access before the episode buffered again. No excuses, no waiting.",n:"Shanto Kumar",c:"Narayanganj",p:"Prime Video",ini:"SK",d:"Oct 2026"},
+  {t:"Fifth order from this shop, mostly for my siblings now. At this point I just send the payment and go do something else. It always arrives.",n:"Mim Chowdhury",c:"Sylhet",p:"Netflix",ini:"MC",d:"Aug 2026"}
 ];
 var RECENT = [
-  {n:"Tanvir",p:"Gemini Pro + 5TB Storage",t:"12 min ago"},
-  {n:"Mim",p:"Apple TV+",t:"26 min ago"},
-  {n:"Asif",p:"HBO MAX",t:"57 min ago"},
+  {n:"Ariful",p:"Gemini Pro + 5TB Storage",t:"12 min ago"},
+  {n:"Sadia",p:"Apple TV+",t:"26 min ago"},
+  {n:"Nabil",p:"HBO MAX",t:"57 min ago"},
   {n:"Rakibul",p:"Disney+ + Hulu",t:"33 min ago"},
-  {n:"Hasan",p:"Bongo Premium",t:"1 hr 5 min ago"},
-  {n:"Sumon",p:"Netflix Premium 4K",t:"3 hr 23 min ago"}
+  {n:"Rifat",p:"Bongo Premium",t:"1 hr 5 min ago"},
+  {n:"Tamanna",p:"Netflix Premium 4K",t:"3 hr 23 min ago"}
 ];
 
 var cart = [], activeCat = "all", currentProduct = null, currentPlan = 0, payMethod = "bKash", lastOrderText = "";
@@ -842,11 +813,6 @@ function download(filename, content, type){
   var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = filename;
   document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){ URL.revokeObjectURL(a.href); }, 2000);
 }
-$("downloadSrc").addEventListener("click", function(){
-  var html = "<!doctype html>\n" + document.documentElement.outerHTML;
-  download("index.html", html, "text/html");
-  toast("index.html ডাউনলোড হচ্ছে — GitHub repo-তে আপলোড করুন");
-});
 /* whatsapp buttons */
 function genericWa(){ openWa("আসসালামু আলাইকুম! একটা সাবস্ক্রিপশন নিয়ে জানতে চাই।"); }
 $("heroWa").addEventListener("click", genericWa);
